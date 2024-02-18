@@ -13,10 +13,10 @@ public class TimeTable extends javax.swing.JFrame {
     /**
      * Creates new form TimeTable
      */
-    private String user;
+    private String loginUsername;
     public TimeTable(String u1) {
         initComponents();
-        user=u1;
+        loginUsername = u1;
         populateSecondTable();
     }
 
@@ -32,15 +32,16 @@ public class TimeTable extends javax.swing.JFrame {
         editBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        backBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 580));
 
         editBtn.setBackground(new java.awt.Color(79, 66, 255));
         editBtn.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
         editBtn.setForeground(new java.awt.Color(255, 255, 255));
         editBtn.setText("Edit");
-        editBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        editBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         editBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,31 +75,64 @@ public class TimeTable extends javax.swing.JFrame {
         jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
 
+        backBtn.setBackground(new java.awt.Color(79, 66, 255));
+        backBtn.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        backBtn.setForeground(new java.awt.Color(255, 255, 255));
+        backBtn.setText("Back");
+        backBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        backBtn.setPreferredSize(new java.awt.Dimension(262, 263));
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(220, 220, 220));
+        jLabel1.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("TimeTable");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(176, 176, 176)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(editBtn)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private static void showMessageDialog(String message, String title, int messageType) {
+    /**
+     *
+     * @param message
+     * @param title
+     * @param messageType
+     */
+    public static void showMessageDialog(String message, String title, int messageType) {
             JOptionPane.showMessageDialog(null, message, title, messageType);
         }
     
@@ -108,23 +142,41 @@ public class TimeTable extends javax.swing.JFrame {
         PreparedStatement preparedstatement=null;
         ResultSet rs=null;
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase","root","pranav@030429");
-            preparedstatement=con.prepareStatement("SELECT username FROM users WHERE username=?");
-            preparedstatement.setString(1,user);
-            rs=preparedstatement.executeQuery();
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase", "root", "pranav@030429");
+            preparedstatement = con.prepareStatement("SELECT username FROM users WHERE username=?");
+            preparedstatement.setString(1, loginUsername);
+            rs = preparedstatement.executeQuery();
             if(rs.next()){
                 editBtn.setEnabled(false);
-                showMessageDialog("You are not allowed to edit","Error",JOptionPane.WARNING_MESSAGE);
+                String message;
+                if (editBtn.isEnabled()) {
+                    // Button is enabled
+                    message = "Button is enabled!";
+                    System.out.println(message);
+                } else {
+                    // Button is disabled
+                    message = "Button is disabled!";
+                    System.out.println(message);
+                }
+                showMessageDialog("You are not allowed to edit", "Error", JOptionPane.WARNING_MESSAGE);
             }
-        }catch(SQLException exception){
+        }catch (Exception exception) {
             exception.printStackTrace();
         }
-        if(editBtn.isEnabled()){
-            EditableTimeTable e1 = new EditableTimeTable("");
+        // Open EditableTimeTable window only if the button is enabled
+        if (editBtn.isEnabled()) {
+            EditableTimeTable e1 = new EditableTimeTable("default value");
             e1.setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_editBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        MainPage m1=new MainPage("default value");
+        m1.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backBtnActionPerformed
     private void populateSecondTable() {
     // Assuming you have a second JTable named jTable2
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -185,13 +237,15 @@ public class TimeTable extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TimeTable("").setVisible(true);
+                new TimeTable("defaultValue").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton editBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

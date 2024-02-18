@@ -44,17 +44,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jpupdates = new javax.swing.JPanel();
         jpdashboard = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jptimetable = new javax.swing.JPanel();
         jpexam = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        UserLoginInfoPanel = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        UsernameLabel = new javax.swing.JLabel();
-        TimeLabel = new javax.swing.JLabel();
         NavigationPanel = new javax.swing.JPanel();
         Home = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,9 +58,16 @@ public class MainPage extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         timetable = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        logOutBtn = new javax.swing.JButton();
+        UserLoginInfoPanel = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        UsernameLabel = new javax.swing.JLabel();
+        TimeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 440));
+        setTitle("MainPage");
+        setPreferredSize(new java.awt.Dimension(690, 440));
         setSize(new java.awt.Dimension(543, 385));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -77,8 +78,6 @@ public class MainPage extends javax.swing.JFrame {
         jpupdates.setBackground(new java.awt.Color(255, 255, 255));
 
         jpdashboard.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel5.setText("Dashboard");
 
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -112,21 +111,14 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jpdashboardLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel5)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         jpdashboardLayout.setVerticalGroup(
             jpdashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpdashboardLayout.createSequentialGroup()
-                .addGroup(jpdashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpdashboardLayout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel5))
-                    .addGroup(jpdashboardLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpupdatesLayout = new javax.swing.GroupLayout(jpupdates);
@@ -153,11 +145,11 @@ public class MainPage extends javax.swing.JFrame {
         jptimetable.setLayout(jptimetableLayout);
         jptimetableLayout.setHorizontalGroup(
             jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         jptimetableLayout.setVerticalGroup(
             jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGap(0, 370, Short.MAX_VALUE)
         );
 
         jPanel1.add(jptimetable);
@@ -170,75 +162,26 @@ public class MainPage extends javax.swing.JFrame {
         jpexam.setLayout(jpexamLayout);
         jpexamLayout.setHorizontalGroup(
             jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
             .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpexamLayout.createSequentialGroup()
-                    .addGap(0, 240, Short.MAX_VALUE)
+                    .addGap(0, 210, Short.MAX_VALUE)
                     .addComponent(jLabel8)
-                    .addGap(0, 241, Short.MAX_VALUE)))
+                    .addGap(0, 211, Short.MAX_VALUE)))
         );
         jpexamLayout.setVerticalGroup(
             jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGap(0, 370, Short.MAX_VALUE)
             .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpexamLayout.createSequentialGroup()
-                    .addGap(0, 182, Short.MAX_VALUE)
+                    .addGap(0, 177, Short.MAX_VALUE)
                     .addComponent(jLabel8)
-                    .addGap(0, 182, Short.MAX_VALUE)))
+                    .addGap(0, 177, Short.MAX_VALUE)))
         );
 
         jPanel1.add(jpexam);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 510, 380));
-
-        UserLoginInfoPanel.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Name : ");
-
-        jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Login Time : ");
-
-        UsernameLabel.setFont(new java.awt.Font("Dubai Medium", 2, 14)); // NOI18N
-        UsernameLabel.setText("jLabel11");
-
-        TimeLabel.setFont(new java.awt.Font("Dubai Medium", 2, 14)); // NOI18N
-        TimeLabel.setText("jLabel11");
-
-        javax.swing.GroupLayout UserLoginInfoPanelLayout = new javax.swing.GroupLayout(UserLoginInfoPanel);
-        UserLoginInfoPanel.setLayout(UserLoginInfoPanelLayout);
-        UserLoginInfoPanelLayout.setHorizontalGroup(
-            UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
-        UserLoginInfoPanelLayout.setVerticalGroup(
-            UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(UsernameLabel))
-                .addGap(28, 28, 28)
-                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(TimeLabel))
-                .addContainerGap(298, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 30, 290, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 450, 370));
 
         NavigationPanel.setBackground(new java.awt.Color(79, 66, 255));
 
@@ -374,20 +317,33 @@ public class MainPage extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        logOutBtn.setBackground(new java.awt.Color(79, 66, 255));
+        logOutBtn.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        logOutBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logOutBtn.setText("Log Out");
+        logOutBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout NavigationPanelLayout = new javax.swing.GroupLayout(NavigationPanel);
         NavigationPanel.setLayout(NavigationPanelLayout);
         NavigationPanelLayout.setHorizontalGroup(
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavigationPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(21, 21, 21)
                 .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(updates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(timetable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(exam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 542, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(204, 204, 204))
         );
         NavigationPanelLayout.setVerticalGroup(
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,9 +355,62 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(timetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(NavigationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+
+        UserLoginInfoPanel.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Name : ");
+
+        jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Login Time : ");
+
+        UsernameLabel.setFont(new java.awt.Font("Dubai Medium", 2, 14)); // NOI18N
+        UsernameLabel.setText("jLabel11");
+
+        TimeLabel.setFont(new java.awt.Font("Dubai Medium", 2, 14)); // NOI18N
+        TimeLabel.setText("jLabel11");
+
+        javax.swing.GroupLayout UserLoginInfoPanelLayout = new javax.swing.GroupLayout(UserLoginInfoPanel);
+        UserLoginInfoPanel.setLayout(UserLoginInfoPanelLayout);
+        UserLoginInfoPanelLayout.setHorizontalGroup(
+            UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        UserLoginInfoPanelLayout.setVerticalGroup(
+            UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(UsernameLabel))
+                .addGap(28, 28, 28)
+                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(TimeLabel))
+                .addContainerGap(288, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 30, 230, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -437,7 +446,8 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(79,66,255));
         timetable.setBackground(new Color(176,189,0));
         exam.setBackground(new Color(79,66,255));
-        TimeTable t1=new TimeTable("");
+        TimeTable t1=new TimeTable("defaultValue");
+        t1.setTitle("Timetable");
         t1.setVisible(true);
         dispose();
     }//GEN-LAST:event_timetableMouseClicked
@@ -452,6 +462,13 @@ public class MainPage extends javax.swing.JFrame {
         timetable.setBackground(new Color(79,66,255));
         exam.setBackground(new Color(176,189,0));
     }//GEN-LAST:event_examMouseClicked
+
+    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
+        // TODO add your handling code here:
+        LoginPage l1=new LoginPage();
+        l1.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_logOutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,7 +518,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -511,6 +527,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jpexam;
     private javax.swing.JPanel jptimetable;
     private javax.swing.JPanel jpupdates;
+    private javax.swing.JButton logOutBtn;
     private javax.swing.JPanel timetable;
     private javax.swing.JPanel updates;
     // End of variables declaration//GEN-END:variables

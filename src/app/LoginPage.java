@@ -208,19 +208,16 @@ public class LoginPage extends javax.swing.JFrame {
     private void signUp(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUp
         // TODO add your handling code here:
         SignUpPage sp=new SignUpPage();
-        sp.show();
+        sp.setVisible(true);
         dispose();
     }//GEN-LAST:event_signUp
-    public String returnInfo(){
-            String u1=usernameField.getText();
-            return u1;
-        }
+
     private void loginPerform(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPerform
         // TODO add your handling code here:
         String u1=usernameField.getText();
         String p1=passwordField.getText();
-        Connection con=null;
-        PreparedStatement preparedstatement=null;
+        Connection con = null;
+        PreparedStatement preparedstatement = null;
         ResultSet rs=null;
         if(!studentRadioBtn.isSelected() && !teacherRadioBtn.isSelected()){
             showMessageDialog("Please Select any one 'Student' or 'Teacher' ","Warning",JOptionPane.WARNING_MESSAGE);
@@ -240,7 +237,7 @@ public class LoginPage extends javax.swing.JFrame {
                         if(reterivedPassword.equals(p1)){
                             //new JFrame
                             MainPage m1= new MainPage(u1);
-                            m1.show();
+                            m1.setVisible(true);
                             dispose();
                         }
                         else{
