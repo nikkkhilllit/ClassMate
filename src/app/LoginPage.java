@@ -239,7 +239,7 @@ public class LoginPage extends javax.swing.JFrame {
                         String reterivedPassword=rs.getString("password");
                         if(reterivedPassword.equals(p1)){
                             //new JFrame
-                            MainPage m1= new MainPage();
+                            MainPage m1= new MainPage(u1);
                             m1.show();
                             dispose();
                         }
@@ -283,8 +283,8 @@ public class LoginPage extends javax.swing.JFrame {
                         String reterivedPassword=rs.getString("password");
                         if(reterivedPassword.equals(p1)){
                             //new JFrame
-                            MainPage m1= new MainPage();
-                            m1.show();
+                            MainPage m1= new MainPage(u1);
+                            m1.setVisible(true);
                             dispose();
                         }
                         else{

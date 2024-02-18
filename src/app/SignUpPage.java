@@ -180,7 +180,7 @@ public class SignUpPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +208,7 @@ public class SignUpPage extends javax.swing.JFrame {
                 showMessageDialog("Confirm Password don't match the password","Password not same",JOptionPane.ERROR_MESSAGE);
                 Thread.sleep(800);
                 LoginPage L1 =new LoginPage();
-                L1.show();
+                L1.setVisible(true);
                 dispose();
             } catch (InterruptedException ex) {
                 Logger.getLogger(SignUpPage.class.getName()).log(Level.SEVERE, null, ex);
@@ -314,7 +314,7 @@ public class SignUpPage extends javax.swing.JFrame {
                     Logger.getLogger(SignUpPage.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 LoginPage L1 =new LoginPage();
-                L1.show();
+                L1.setVisible(true);
                 dispose();
             }
         }
