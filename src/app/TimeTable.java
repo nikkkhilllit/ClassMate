@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,7 +31,7 @@ public class TimeTable extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        editBtn = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         backBtn = new javax.swing.JButton();
@@ -38,15 +40,15 @@ public class TimeTable extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Timetable");
 
-        editBtn.setBackground(new java.awt.Color(79, 66, 255));
-        editBtn.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        editBtn.setForeground(new java.awt.Color(255, 255, 255));
-        editBtn.setText("Edit");
-        editBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        editBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        editBtn.addActionListener(new java.awt.event.ActionListener() {
+        editButton.setBackground(new java.awt.Color(79, 66, 255));
+        editButton.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        editButton.setForeground(new java.awt.Color(255, 255, 255));
+        editButton.setText("Edit");
+        editButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editBtnActionPerformed(evt);
+                editButtonActionPerformed(evt);
             }
         });
 
@@ -107,7 +109,7 @@ public class TimeTable extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
@@ -120,7 +122,7 @@ public class TimeTable extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(editBtn)
+                .addComponent(editButton)
                 .addGap(21, 21, 21))
         );
 
@@ -133,44 +135,49 @@ public class TimeTable extends javax.swing.JFrame {
      * @param title
      * @param messageType
      */
-    public static void showMessageDialog(String message, String title, int messageType) {
+    private static void showMessageDialog(String message, String title, int messageType) {
             JOptionPane.showMessageDialog(null, message, title, messageType);
         }
     
-    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
         Connection con=null;
         PreparedStatement preparedstatement=null;
         ResultSet rs=null;
         try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase", "root", "pranav@030429");
-            preparedstatement = con.prepareStatement("SELECT username FROM users WHERE username=?");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase","root","pranav@030429");
+            preparedstatement=con.prepareStatement("SELECT username FROM users WHERE username=?");
             preparedstatement.setString(1, loginUsername);
-            rs = preparedstatement.executeQuery();
-            if(rs.next()){
-                editBtn.setEnabled(false);
-                String message;
-                if (editBtn.isEnabled()) {
-                    // Button is enabled
-                    message = "Button is enabled!";
-                    System.out.println(message);
-                } else {
-                    // Button is disabled
-                    message = "Button is disabled!";
-                    System.out.println(message);
+            rs=preparedstatement.executeQuery();
+            if (rs.next()) {
+                System.out.println("Entered if");
+                editButton.setEnabled(false);
+                try {
+                    Thread.sleep(4);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(TimeTable.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                showMessageDialog("You are not allowed to edit", "Error", JOptionPane.WARNING_MESSAGE);
+                showMessageDialog( "You are not allowed to edit", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }catch (Exception exception) {
+        } catch(SQLException exception){
             exception.printStackTrace();
+        } finally {
+            try {
+                con.close();
+                preparedstatement.close();
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         // Open EditableTimeTable window only if the button is enabled
-        if (editBtn.isEnabled()) {
-            EditableTimeTable e1 = new EditableTimeTable("default value");
+        if (editButton.isEnabled()){
+            EditableTimeTable e1 = new EditableTimeTable(loginUsername);
             e1.setVisible(true);
             dispose();
         }
-    }//GEN-LAST:event_editBtnActionPerformed
+    }//GEN-LAST:event_editButtonActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
@@ -245,7 +252,7 @@ public class TimeTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton editBtn;
+    private javax.swing.JButton editButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

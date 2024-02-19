@@ -23,12 +23,12 @@ public class EditableTimeTable extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    private String user;
+    private String username;
     public EditableTimeTable(String u1) {
         initComponents();
         
         //User Login Name from login page 
-        user=u1;
+        username=u1;
     }
 
     /**
@@ -159,10 +159,15 @@ public class EditableTimeTable extends javax.swing.JFrame {
         try{
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase","root","pranav@030429");
             preparedstatement=con.prepareStatement("SELECT username FROM users WHERE username=?");
-            preparedstatement.setString(1,user);
+            preparedstatement.setString(1,username);
             rs=preparedstatement.executeQuery();
             if(rs.next()){
                 addBtn.setEnabled(false);
+                try {
+                    Thread.sleep(4);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(EditableTimeTable.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 showMessageDialog("You are not allowed to edit","Error",JOptionPane.WARNING_MESSAGE);
             }
         }catch(SQLException exception){

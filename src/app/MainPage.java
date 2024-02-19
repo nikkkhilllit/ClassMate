@@ -17,10 +17,11 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private String loginUsername;
     public MainPage(String u1) {
-        String Username=u1;
+        loginUsername=u1;
         initComponents();
-        UsernameLabel.setText(Username);
+        UsernameLabel.setText(loginUsername);
         LocalTime currentTime = LocalTime.now();
 
         // Format the time using DateTimeFormatter
@@ -446,7 +447,7 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(79,66,255));
         timetable.setBackground(new Color(176,189,0));
         exam.setBackground(new Color(79,66,255));
-        TimeTable t1=new TimeTable("defaultValue");
+        TimeTable t1=new TimeTable(loginUsername);
         t1.setTitle("Timetable");
         t1.setVisible(true);
         dispose();
