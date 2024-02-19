@@ -23,13 +23,13 @@ public class EditableTimeTable extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    private String username;
+    private String loginUsername;
     private static final String DB_PASSWORD="pranav@030429";
     public EditableTimeTable(String u1) {
         initComponents();
         
         //User Login Name from login page 
-        username=u1;
+        loginUsername=u1;
     }
 
     /**
@@ -48,6 +48,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
         backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Edit TImeTable");
         setPreferredSize(new java.awt.Dimension(720, 565));
 
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
@@ -160,7 +161,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
         try{
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
             preparedstatement=con.prepareStatement("SELECT username FROM students WHERE username=?");
-            preparedstatement.setString(1,username);
+            preparedstatement.setString(1,loginUsername);
             rs=preparedstatement.executeQuery();
             if(rs.next()){
                 addBtn.setEnabled(false);
@@ -297,8 +298,13 @@ public class EditableTimeTable extends javax.swing.JFrame {
                         showMessageDialog("Data Inserted Successfully!\nRows Inserted: " + rowsInserted.length, "Success", JOptionPane.INFORMATION_MESSAGE);
                         try {
                             Thread.sleep(500);
-                            TimeTable t1=new TimeTable("");
-                            t1.setVisible(true);
+                            MainPage m1= new MainPage(loginUsername);
+                            m1.setVisible(true);
+                            m1.homePanel.setVisible(true);
+                            m1.Home.setBackground(new java.awt.Color(176, 189, 0));
+                            m1.jpupdates.setVisible(false);
+                            m1.jptimetable.setVisible(false);
+                            m1.jpexam.setVisible(false);
                             dispose();
                         } catch (InterruptedException ex) {
                             Logger.getLogger(EditableTimeTable.class.getName()).log(Level.SEVERE, null, ex);
@@ -327,8 +333,13 @@ public class EditableTimeTable extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        TimeTable t1=new TimeTable(username);
-        t1.setVisible(true);
+        MainPage m1= new MainPage(loginUsername);
+        m1.setVisible(true);
+        m1.homePanel.setVisible(true);
+        m1.Home.setBackground(new java.awt.Color(176, 189, 0));
+        m1.jpupdates.setVisible(false);
+        m1.jptimetable.setVisible(false);
+        m1.jpexam.setVisible(false);
         dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 

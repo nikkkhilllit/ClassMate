@@ -6,8 +6,17 @@
 package app;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Admin
@@ -18,6 +27,7 @@ public class MainPage extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     private String loginUsername;
+    private static final String DB_PASSWORD="pranav@030429";
     public MainPage(String u1) {
         loginUsername=u1;
         initComponents();
@@ -30,6 +40,8 @@ public class MainPage extends javax.swing.JFrame {
 
         // Set the formatted time to the TimeLabel
         TimeLabel.setText(formattedTime);
+        populateTimeTable();
+        populateExamTable();
 
     }
     
@@ -42,14 +54,24 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        homePanel = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jpupdates = new javax.swing.JPanel();
-        jpdashboard = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jptimetable = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        timeTable = new javax.swing.JTable();
+        editButton = new javax.swing.JButton();
         jpexam = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        examTable = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        editExamBtn = new javax.swing.JButton();
         NavigationPanel = new javax.swing.JPanel();
         Home = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -68,17 +90,40 @@ public class MainPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MainPage");
-        setPreferredSize(new java.awt.Dimension(690, 440));
+        setPreferredSize(new java.awt.Dimension(820, 570));
         setSize(new java.awt.Dimension(543, 385));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+        homePanel.setBackground(new java.awt.Color(255, 255, 255));
+        homePanel.setPreferredSize(new java.awt.Dimension(480, 404));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Welcome to Activity Management");
+
+        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
+        homePanel.setLayout(homePanelLayout);
+        homePanelLayout.setHorizontalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(120, Short.MAX_VALUE))
+        );
+        homePanelLayout.setVerticalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(210, 210, 210))
+        );
+
+        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
 
         jpupdates.setBackground(new java.awt.Color(255, 255, 255));
-
-        jpdashboard.setBackground(new java.awt.Color(255, 255, 255));
+        jpupdates.setPreferredSize(new java.awt.Dimension(484, 404));
 
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -105,84 +150,224 @@ public class MainPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jpdashboardLayout = new javax.swing.GroupLayout(jpdashboard);
-        jpdashboard.setLayout(jpdashboardLayout);
-        jpdashboardLayout.setHorizontalGroup(
-            jpdashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpdashboardLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
-        );
-        jpdashboardLayout.setVerticalGroup(
-            jpdashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpdashboardLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jpupdatesLayout = new javax.swing.GroupLayout(jpupdates);
         jpupdates.setLayout(jpupdatesLayout);
         jpupdatesLayout.setHorizontalGroup(
             jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpupdatesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpdashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         jpupdatesLayout.setVerticalGroup(
             jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpupdatesLayout.createSequentialGroup()
-                .addComponent(jpdashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jpupdatesLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jpupdates);
+        getContentPane().add(jpupdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
 
         jptimetable.setBackground(new java.awt.Color(255, 255, 255));
+        jptimetable.setPreferredSize(new java.awt.Dimension(480, 404));
+
+        jLabel12.setBackground(new java.awt.Color(220, 220, 220));
+        jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("TimeTable");
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+
+        timeTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        timeTable.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        timeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "StartTime ", "End Time ", "Monday ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        timeTable.setCellSelectionEnabled(true);
+        timeTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        timeTable.setGridColor(new java.awt.Color(51, 51, 51));
+        timeTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        timeTable.setShowGrid(true);
+        timeTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(timeTable);
+        timeTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        editButton.setBackground(new java.awt.Color(79, 66, 255));
+        editButton.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        editButton.setForeground(new java.awt.Color(255, 255, 255));
+        editButton.setText("Edit");
+        editButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jptimetableLayout = new javax.swing.GroupLayout(jptimetable);
         jptimetable.setLayout(jptimetableLayout);
         jptimetableLayout.setHorizontalGroup(
             jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(jptimetableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jptimetableLayout.createSequentialGroup()
+                        .addGap(0, 541, Short.MAX_VALUE)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jptimetableLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(169, 169, 169))
         );
         jptimetableLayout.setVerticalGroup(
             jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGroup(jptimetableLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel12)
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addComponent(editButton)
+                .addContainerGap())
         );
 
-        jPanel1.add(jptimetable);
+        getContentPane().add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
 
         jpexam.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel8.setText("Exam");
+        examTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        examTable.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        examTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Sr No.", "Date", "S.Y.B.Sc. C.S"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        examTable.setColumnSelectionAllowed(true);
+        examTable.setGridColor(new java.awt.Color(0, 0, 0));
+        examTable.setName(""); // NOI18N
+        examTable.setShowGrid(true);
+        examTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(examTable);
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel5.setText("Exam TimeTable ");
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel6.setText("Third Semester End (External) Examination October-2023");
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel7.setText("A.T.K.T - Regular & Repeater Students.");
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel8.setText("Time :- 11:30 a.m. to 1:30 p.m.");
+
+        editExamBtn.setBackground(new java.awt.Color(79, 66, 255));
+        editExamBtn.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        editExamBtn.setForeground(new java.awt.Color(255, 255, 255));
+        editExamBtn.setText("Edit");
+        editExamBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        editExamBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editExamBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editExamBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpexamLayout = new javax.swing.GroupLayout(jpexam);
         jpexam.setLayout(jpexamLayout);
         jpexamLayout.setHorizontalGroup(
             jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-            .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jpexamLayout.createSequentialGroup()
-                    .addGap(0, 210, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 211, Short.MAX_VALUE)))
+            .addGroup(jpexamLayout.createSequentialGroup()
+                .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpexamLayout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabel8))
+                    .addGroup(jpexamLayout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addComponent(jLabel5)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jpexamLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                        .addGap(0, 122, Short.MAX_VALUE)
+                        .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(176, 176, 176))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                                .addComponent(editExamBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(123, 123, 123))))
+                    .addComponent(jScrollPane2)))
         );
         jpexamLayout.setVerticalGroup(
             jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-            .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jpexamLayout.createSequentialGroup()
-                    .addGap(0, 177, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 177, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(editExamBtn)
+                .addGap(55, 55, 55))
         );
 
-        jPanel1.add(jpexam);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 450, 370));
+        getContentPane().add(jpexam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 610, 490));
 
         NavigationPanel.setBackground(new java.awt.Color(79, 66, 255));
 
@@ -342,9 +527,9 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(timetable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(exam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
                 .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
+                .addGap(81, 81, 81))
         );
         NavigationPanelLayout.setVerticalGroup(
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,13 +541,13 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(timetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+            .addGroup(NavigationPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(NavigationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+        getContentPane().add(NavigationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         UserLoginInfoPanel.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -386,16 +571,16 @@ public class MainPage extends javax.swing.JFrame {
             UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap())
         );
         UserLoginInfoPanelLayout.setVerticalGroup(
             UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,16 +593,16 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(TimeLabel))
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(418, Short.MAX_VALUE))
         );
 
-        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 30, 230, -1));
+        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 200, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        jpdashboard.setVisible(true);
+        homePanel.setVisible(true);
         jpupdates.setVisible(false);
         jptimetable.setVisible(false);
         jpexam.setVisible(false);
@@ -428,7 +613,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_HomeMouseClicked
 
     private void updatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatesMouseClicked
-        jpdashboard.setVisible(false);
+        homePanel.setVisible(false);
         jpupdates.setVisible(true);
         jptimetable.setVisible(false);
         jpexam.setVisible(false);
@@ -439,7 +624,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_updatesMouseClicked
 
     private void timetableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timetableMouseClicked
-        jpdashboard.setVisible(false);
+        homePanel.setVisible(false);
         jpupdates.setVisible(false);
         jptimetable.setVisible(true);
         jpexam.setVisible(false);
@@ -447,14 +632,14 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(79,66,255));
         timetable.setBackground(new Color(176,189,0));
         exam.setBackground(new Color(79,66,255));
-        TimeTable t1=new TimeTable(loginUsername);
-        t1.setTitle("Timetable");
-        t1.setVisible(true);
-        dispose();
+//        TimeTable t1=new TimeTable(loginUsername);
+//        t1.setTitle("Timetable");
+//        t1.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_timetableMouseClicked
 
     private void examMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_examMouseClicked
-        jpdashboard.setVisible(false);
+        homePanel.setVisible(false);
         jpupdates.setVisible(false);
         jptimetable.setVisible(false);
         jpexam.setVisible(true);
@@ -470,7 +655,147 @@ public class MainPage extends javax.swing.JFrame {
         l1.setVisible(true);
         dispose();
     }//GEN-LAST:event_logOutBtnActionPerformed
+    private static void showMessageDialog(String message, String title, int messageType) {
+            JOptionPane.showMessageDialog(null, message, title, messageType);
+        }
+    private void editExamBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editExamBtnActionPerformed
+        // TODO add your handling code here:
+        Connection con=null;
+        PreparedStatement preparedstatement=null;
+        ResultSet rs=null;
+        try{
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+            preparedstatement=con.prepareStatement("SELECT username FROM students WHERE username=?");
+            preparedstatement.setString(1, loginUsername);
+            rs=preparedstatement.executeQuery();
+            if (rs.next()) {
+                editExamBtn.setEnabled(false);
+                try {
+                    Thread.sleep(4);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog( null,"You are not allowed to edit", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch(SQLException exception){
+            exception.printStackTrace();
+        } finally {
+            try {
+                con.close();
+                preparedstatement.close();
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
+        // Open EditableTimeTable window only if the button is enabled
+        if (editExamBtn.isEnabled()){
+            EditableExamTimeTable e1 = new EditableExamTimeTable(loginUsername);
+            e1.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_editExamBtnActionPerformed
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO add your handling code here:
+        Connection con=null;
+        PreparedStatement preparedstatement=null;
+        ResultSet rs=null;
+        try{
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+            preparedstatement=con.prepareStatement("SELECT username FROM students WHERE username=?");
+            preparedstatement.setString(1, loginUsername);
+            rs=preparedstatement.executeQuery();
+            if (rs.next()) {
+                editButton.setEnabled(false);
+                try {
+                    Thread.sleep(4);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                showMessageDialog( "You are not allowed to edit", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch(SQLException exception){
+            exception.printStackTrace();
+        } finally {
+            try {
+                con.close();
+                preparedstatement.close();
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Open EditableTimeTable window only if the button is enabled
+        if (editButton.isEnabled()){
+            EditableTimeTable e1 = new EditableTimeTable(loginUsername);
+            e1.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_editButtonActionPerformed
+    private void populateTimeTable() {
+    // Assuming you have a second JTable named jTable2
+        DefaultTableModel model = (DefaultTableModel) timeTable.getModel();
+        model.setRowCount(0); // Clear existing rows
+        PreparedStatement pstmt = null;
+        Connection con=null;
+        ResultSet rs=null;
+    
+    try {
+        // Fetch data from the database and add rows to the model
+        con= DriverManager.getConnection("jdbc:mysql://localhost:3306/lecturedatabase", "root", DB_PASSWORD);
+        pstmt=con.prepareStatement("SELECT * FROM timetable");
+        rs=pstmt.executeQuery();
+
+        while (rs.next()) {
+            Object[] row = {
+                rs.getString("Start Time"),
+                rs.getString("End Time"),
+                rs.getString("Monday"),
+                rs.getString("Tuesday"),
+                rs.getString("Wednesday"),
+                rs.getString("Thursday"),
+                rs.getString("Friday"),
+                rs.getString("Saturday")
+            };
+            model.addRow(row);
+        }
+        con.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+    
+    
+    private void populateExamTable() {
+        // Assuming you have a second JTable named jTable2
+            DefaultTableModel model = (DefaultTableModel) examTable.getModel();
+            model.setRowCount(0); // Clear existing rows
+            PreparedStatement pstmt = null;
+            Connection con=null;
+            ResultSet rs=null;
+
+        try {
+            // Fetch data from the database and add rows to the model
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/examdatabase", "root", DB_PASSWORD);
+            pstmt=con.prepareStatement("SELECT * FROM examtimetable");
+            rs=pstmt.executeQuery();
+
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getString("Sr No."),
+                    rs.getString("Date"),
+                    rs.getString("S.Y.B.Sc.C.S"),
+                };
+                model.addRow(row);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -502,33 +827,50 @@ public class MainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPage("DefaultUsername").setVisible(true);
+                 MainPage mainPage = new MainPage("DefaultUsername");
+                    mainPage.homePanel.setVisible(true);
+                    mainPage.Home.setBackground(new Color(176, 189, 0));
+                    mainPage.jpupdates.setVisible(false);
+                    mainPage.jptimetable.setVisible(false);
+                    mainPage.jpexam.setVisible(false);
+                    
+                    mainPage.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Home;
+    public javax.swing.JPanel Home;
     private javax.swing.JPanel NavigationPanel;
     private javax.swing.JLabel TimeLabel;
     private javax.swing.JPanel UserLoginInfoPanel;
     private javax.swing.JLabel UsernameLabel;
+    private javax.swing.JButton editButton;
+    private javax.swing.JButton editExamBtn;
     private javax.swing.JPanel exam;
+    private javax.swing.JTable examTable;
+    public javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JPanel jpdashboard;
-    private javax.swing.JPanel jpexam;
-    private javax.swing.JPanel jptimetable;
-    private javax.swing.JPanel jpupdates;
+    public javax.swing.JPanel jpexam;
+    public javax.swing.JPanel jptimetable;
+    public javax.swing.JPanel jpupdates;
     private javax.swing.JButton logOutBtn;
+    private javax.swing.JTable timeTable;
     private javax.swing.JPanel timetable;
     private javax.swing.JPanel updates;
     // End of variables declaration//GEN-END:variables

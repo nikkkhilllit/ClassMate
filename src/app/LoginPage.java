@@ -4,6 +4,7 @@
  */
 package app;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -239,6 +240,11 @@ public class LoginPage extends javax.swing.JFrame {
                             //new JFrame
                             MainPage m1= new MainPage(u1);
                             m1.setVisible(true);
+                            m1.homePanel.setVisible(true);
+                            m1.Home.setBackground(new Color(176, 189, 0));
+                            m1.jpupdates.setVisible(false);
+                            m1.jptimetable.setVisible(false);
+                            m1.jpexam.setVisible(false);
                             dispose();
                         }
                         else{
@@ -283,6 +289,11 @@ public class LoginPage extends javax.swing.JFrame {
                             //new JFrame
                             MainPage m1= new MainPage(u1);
                             m1.setVisible(true);
+                            m1.homePanel.setVisible(true);
+                            m1.Home.setBackground(new Color(176, 189, 0));
+                            m1.jpupdates.setVisible(false);
+                            m1.jptimetable.setVisible(false);
+                            m1.jpexam.setVisible(false);
                             dispose();
                         }
                         else{
