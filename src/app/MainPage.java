@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
@@ -106,21 +107,7 @@ public class MainPage extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Teacher", "Subject"
@@ -135,11 +122,11 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(homePanelLayout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
         homePanelLayout.setVerticalGroup(
@@ -147,9 +134,9 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(236, 236, 236))
         );
 
         getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
@@ -601,14 +588,41 @@ public class MainPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        homePanel.setVisible(true);
-        jpupdates.setVisible(false);
-        jptimetable.setVisible(false);
-        jpexam.setVisible(false);
-        Home.setBackground(new Color(176,189,0));
-        updates.setBackground(new Color(79,66,255));
-        timetable.setBackground(new Color(79,66,255));
-        exam.setBackground(new Color(79,66,255));
+        try {
+            homePanel.setVisible(true);
+            jpupdates.setVisible(false);
+            jptimetable.setVisible(false);
+            jpexam.setVisible(false);
+            Home.setBackground(new Color(176,189,0));
+            updates.setBackground(new Color(79,66,255));
+            timetable.setBackground(new Color(79,66,255));
+            exam.setBackground(new Color(79,66,255));
+            Connection con=null;
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+            Statement stmt=con.createStatement();
+            stmt.executeUpdate("create table clg(TeacherName varchar(20),Subject varchar(100))");
+            stmt.executeUpdate("insert into clg values('PD','SE')");
+            stmt.executeUpdate("insert into clg values('RP','Advance Java')");
+            stmt.executeUpdate("insert into clg values('KKG','Android')");
+            stmt.executeUpdate("insert into clg values('SSW','Computer Network')");
+            stmt.executeUpdate("insert into clg values('SSV','Linear Algebra')");
+            stmt.executeUpdate("insert into clg values('PD','FOA')");
+            stmt.executeUpdate("insert into clg values('APR','.NET')");
+            
+            ResultSet rs = stmt.executeQuery("select * from clg");
+            
+            while(rs.next()){
+                String TeacherName = rs.getString("TeacherName");
+                String Subject = rs.getString("Subject");
+                
+                String tbData[]={TeacherName,Subject};
+                DefaultTableModel tbl = (DefaultTableModel)jTable1.getModel();
+                tbl.addRow(tbData);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_HomeMouseClicked
 
     private void updatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatesMouseClicked

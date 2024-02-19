@@ -74,7 +74,6 @@ public class EditableTimeTable extends javax.swing.JFrame {
         jTable1.setCellSelectionEnabled(true);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTable1.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
 
         addBtn.setBackground(new java.awt.Color(79, 66, 255));

@@ -1,5 +1,7 @@
 package app;
 
+
+
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -42,6 +44,7 @@ public class UpdatePanelExample extends JFrame {
         loadMessagesFromDatabase();
 
         createSystemTrayIcon();
+        
     }
 
     private void connectToDatabase() {
