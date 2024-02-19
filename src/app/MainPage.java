@@ -8,6 +8,7 @@ package app;
 import java.awt.Color;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author Admin
@@ -43,10 +44,10 @@ public class MainPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jpupdates = new javax.swing.JPanel();
         jpdashboard = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jpupdates = new javax.swing.JPanel();
         jptimetable = new javax.swing.JPanel();
         jpexam = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -75,8 +76,6 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
-
-        jpupdates.setBackground(new java.awt.Color(255, 255, 255));
 
         jpdashboard.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -112,7 +111,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jpdashboardLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         jpdashboardLayout.setVerticalGroup(
             jpdashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,20 +121,19 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jpdashboard);
+
+        jpupdates.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jpupdatesLayout = new javax.swing.GroupLayout(jpupdates);
         jpupdates.setLayout(jpupdatesLayout);
         jpupdatesLayout.setHorizontalGroup(
             jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpupdatesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpdashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         jpupdatesLayout.setVerticalGroup(
             jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpupdatesLayout.createSequentialGroup()
-                .addComponent(jpdashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 370, Short.MAX_VALUE)
         );
 
         jPanel1.add(jpupdates);
@@ -207,7 +205,7 @@ public class MainPage extends javax.swing.JFrame {
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
         HomeLayout.setVerticalGroup(
@@ -234,7 +232,7 @@ public class MainPage extends javax.swing.JFrame {
         updates.setLayout(updatesLayout);
         updatesLayout.setHorizontalGroup(
             updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(updatesLayout.createSequentialGroup()
                     .addContainerGap()
@@ -272,7 +270,7 @@ public class MainPage extends javax.swing.JFrame {
             examLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(examLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
         examLayout.setVerticalGroup(
@@ -301,7 +299,7 @@ public class MainPage extends javax.swing.JFrame {
         timetable.setLayout(timetableLayout);
         timetableLayout.setHorizontalGroup(
             timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
+            .addGap(0, 76, Short.MAX_VALUE)
             .addGroup(timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(timetableLayout.createSequentialGroup()
                     .addContainerGap()
@@ -351,8 +349,8 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(NavigationPanelLayout.createSequentialGroup()
                 .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(exam, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                        .addComponent(updates, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addComponent(exam, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                        .addComponent(updates, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
                         .addComponent(timetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -395,7 +393,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         UserLoginInfoPanelLayout.setVerticalGroup(
             UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +409,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap(288, Short.MAX_VALUE))
         );
 
-        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 30, 230, -1));
+        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -436,6 +434,10 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(176,189,0));
         timetable.setBackground(new Color(79,66,255));
         exam.setBackground(new Color(79,66,255));
+        UpdatePanelExample up = new UpdatePanelExample();
+        up.setTitle("Updates");
+        up.setVisible(true);
+        dispose();
     }//GEN-LAST:event_updatesMouseClicked
 
     private void timetableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timetableMouseClicked
