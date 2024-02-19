@@ -181,7 +181,7 @@ public class TimeTable extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        MainPage m1=new MainPage("default value");
+        MainPage m1=new MainPage(loginUsername);
         m1.setVisible(true);
         dispose();
     }//GEN-LAST:event_backBtnActionPerformed

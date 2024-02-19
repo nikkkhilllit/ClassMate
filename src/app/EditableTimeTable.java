@@ -327,7 +327,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        TimeTable t1=new TimeTable("Default Value");
+        TimeTable t1=new TimeTable(username);
         t1.setVisible(true);
         dispose();
     }//GEN-LAST:event_backBtnActionPerformed
