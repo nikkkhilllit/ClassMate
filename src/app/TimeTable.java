@@ -16,6 +16,7 @@ public class TimeTable extends javax.swing.JFrame {
      * Creates new form TimeTable
      */
     private String loginUsername;
+    private static final String DB_PASSWORD="pranav@030429";
     public TimeTable(String u1) {
         initComponents();
         loginUsername = u1;
@@ -145,12 +146,11 @@ public class TimeTable extends javax.swing.JFrame {
         PreparedStatement preparedstatement=null;
         ResultSet rs=null;
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase","root","pranav@030429");
-            preparedstatement=con.prepareStatement("SELECT username FROM users WHERE username=?");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+            preparedstatement=con.prepareStatement("SELECT username FROM students WHERE username=?");
             preparedstatement.setString(1, loginUsername);
             rs=preparedstatement.executeQuery();
             if (rs.next()) {
-                System.out.println("Entered if");
                 editButton.setEnabled(false);
                 try {
                     Thread.sleep(4);
@@ -195,8 +195,8 @@ public class TimeTable extends javax.swing.JFrame {
     
     try {
         // Fetch data from the database and add rows to the model
-        con= DriverManager.getConnection("jdbc:mysql://localhost:3306/lecturetimetable", "root", "pranav@030429");
-        pstmt=con.prepareStatement("SELECT * FROM newtimetable");
+        con= DriverManager.getConnection("jdbc:mysql://localhost:3306/lecturedatabase", "root", DB_PASSWORD);
+        pstmt=con.prepareStatement("SELECT * FROM timetable");
         rs=pstmt.executeQuery();
 
         while (rs.next()) {

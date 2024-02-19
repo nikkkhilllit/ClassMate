@@ -24,6 +24,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     private String username;
+    private static final String DB_PASSWORD="pranav@030429";
     public EditableTimeTable(String u1) {
         initComponents();
         
@@ -157,8 +158,8 @@ public class EditableTimeTable extends javax.swing.JFrame {
         PreparedStatement preparedstatement=null;
         ResultSet rs=null;
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase","root","pranav@030429");
-            preparedstatement=con.prepareStatement("SELECT username FROM users WHERE username=?");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+            preparedstatement=con.prepareStatement("SELECT username FROM students WHERE username=?");
             preparedstatement.setString(1,username);
             rs=preparedstatement.executeQuery();
             if(rs.next()){
@@ -246,18 +247,18 @@ public class EditableTimeTable extends javax.swing.JFrame {
         // TODO add your handling code here:
             try {
                 DefaultTableModel bulkModel = (DefaultTableModel) jTable1.getModel();
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lecturetimetable", "root", "pranav@030429");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lecturedatabase", "root", DB_PASSWORD);
                 // Begin a transaction to ensure atomicity
                 con.setAutoCommit(false);
                 // Define the SQL query for deleting existing data
-                String deleteQuery = "DELETE FROM newtimetable";
+                String deleteQuery = "DELETE FROM timetable";
 
                 try (PreparedStatement deleteStatement = con.prepareStatement(deleteQuery)) {
                     // Execute the delete query
                     deleteStatement.executeUpdate();
 
                     // Define the SQL query for batch insertion
-                    String bulkQuery = "INSERT INTO newtimetable (`Start Time`, `End Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    String bulkQuery = "INSERT INTO timetable (`Start Time`, `End Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
                     // Create a PreparedStatement for batch execution
                     try (PreparedStatement pstmt = con.prepareStatement(bulkQuery)) {

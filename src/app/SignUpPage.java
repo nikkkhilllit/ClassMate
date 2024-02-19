@@ -13,6 +13,7 @@ public class SignUpPage extends javax.swing.JFrame {
     /**
      * Creates new form SignUpPage
      */
+    private static final String DB_PASSWORD="pranav@030429";
     public SignUpPage() {
         initComponents();
     }
@@ -224,8 +225,8 @@ public class SignUpPage extends javax.swing.JFrame {
         ResultSet rs2=null;
         if(studentRadioBtn.isSelected()){
             try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase","root","pranav@030429");
-            psCheckUserExists=con.prepareStatement("SELECT * from users WHERE username = ?");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+            psCheckUserExists=con.prepareStatement("SELECT * from students WHERE username = ?");
             psCheckUserExists.setString(1, new_u1);
             rs=psCheckUserExists.executeQuery();
             if(rs.isBeforeFirst()){
@@ -236,7 +237,7 @@ public class SignUpPage extends javax.swing.JFrame {
 //                alert.show();
             }
             else{
-                psInsert=con.prepareStatement("INSERT INTO users(username,password,confirmpassword)VALUES(?,?,?)");
+                psInsert=con.prepareStatement("INSERT INTO students(username,password,confirmpassword)VALUES(?,?,?)");
                 psInsert.setString(1, new_u1);
                 psInsert.setString(2,new_p1);
                 psInsert.setString(3,confirm_p1);
@@ -272,7 +273,7 @@ public class SignUpPage extends javax.swing.JFrame {
         }
         else if(teacherRadioBtn.isSelected()){
         try{
-            con2=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root","pranav@030429");
+            con2=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root",DB_PASSWORD);
             psCheckUserExists2=con2.prepareStatement("SELECT * from teachers WHERE username = ?");
             psCheckUserExists2.setString(1, new_u1);
             rs2=psCheckUserExists2.executeQuery();

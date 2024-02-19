@@ -20,6 +20,7 @@ public class LoginPage extends javax.swing.JFrame {
     /**
      * Creates new form LoginPage
      */
+    private static final String DB_PASSWORD="pranav@030429";
     public LoginPage() {
         initComponents();
     }
@@ -224,8 +225,8 @@ public class LoginPage extends javax.swing.JFrame {
         }
         if(studentRadioBtn.isSelected()){
             try{
-                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/userdatabase","root","pranav@030429");
-                preparedstatement=con.prepareStatement("SELECT password FROM users WHERE username=?");
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+                preparedstatement=con.prepareStatement("SELECT password FROM students WHERE username=?");
                 preparedstatement.setString(1,u1);
                 rs=preparedstatement.executeQuery();
                 if(!rs.isBeforeFirst()){
@@ -268,7 +269,7 @@ public class LoginPage extends javax.swing.JFrame {
     }
         else if(teacherRadioBtn.isSelected()){
             try{
-                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root","pranav@030429");
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root",DB_PASSWORD);
                 preparedstatement=con.prepareStatement("SELECT password FROM teachers WHERE username =?");
                 preparedstatement.setString(1,u1);
                 rs=preparedstatement.executeQuery();
