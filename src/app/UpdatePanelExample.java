@@ -82,13 +82,15 @@ public class UpdatePanelExample extends JFrame {
 
     private void switchToMessagePanel() {
         JPanel messageInputPanel = new JPanel(new BorderLayout());
-        name=new JLabel("Enter Notice : ");
+        name=new JLabel("Enter Notice or Message (It will be Permenant) : ");
+        messageInputPanel.add(name,BorderLayout.NORTH);
         messageTextField = new JTextField();
-        messageInputPanel.add(name);
-        messageInputPanel.add(messageTextField);
+        messageInputPanel.add(messageTextField,BorderLayout.CENTER);
 
         JButton submitButton = new JButton("Submit");
         submitButton.setBackground(new Color(204, 204, 255));
+        submitButton.setPreferredSize(new Dimension(80, 30));
+        
         submitButton.addActionListener(e -> {
             String messageText = messageTextField.getText().trim();
             if (!messageText.isEmpty()) {
@@ -112,7 +114,7 @@ public class UpdatePanelExample extends JFrame {
         mainPanel.removeAll();
         
         JButton switchPanelButton = new JButton("Edit");
-        switchPanelButton.setBackground(new Color(204, 204, 255));
+        switchPanelButton.setBackground(new Color(153, 153, 255));
         switchPanelButton.addActionListener(e -> switchToMessagePanel());
         mainPanel.add(switchPanelButton, BorderLayout.SOUTH);
 
@@ -124,8 +126,8 @@ public class UpdatePanelExample extends JFrame {
 
     private void addMessage(String newText, String timestamp) {
         JPanel messageBox = createMessageBox(newText, timestamp);
-        messagePanel.add(messageBox, 0);// Add message box at index 0 (bottom)
-        messagePanel.add(Box.createVerticalStrut(5));// Add spacing between message boxes
+        messagePanel.add(messageBox);// Add message box at index 0 (bottom)
+        messagePanel.add(Box.createVerticalStrut(10));// Add spacing between message boxes
         messagePanel.revalidate();
         messagePanel.repaint(); // Ensure proper rendering
     }
@@ -137,7 +139,7 @@ public class UpdatePanelExample extends JFrame {
     private JPanel createMessageBox(String messageText, String timestamp) {
         JPanel messageBox = new JPanel(new BorderLayout());
         messageBox.setPreferredSize(new Dimension(340, 30));
-        messageBox.setBackground(new Color(255, 255, 255));
+        messageBox.setBackground(new Color(204, 204, 255));
         messageBox.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         JLabel messageLabel = new JLabel(messageText);
