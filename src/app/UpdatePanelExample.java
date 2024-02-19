@@ -11,17 +11,14 @@ import java.util.logging.*;
 import java.awt.TrayIcon.MessageType;
 
 public class UpdatePanelExample extends JFrame {
-    private JPanel mainPanel;
-    private JPanel messagePanel;
-    private JTextField inputField;
-    private JTextField messageTextField;
+      
     private Connection conn;
     private static final Logger LOGGER = Logger.getLogger(UpdatePanelExample.class.getName());
     private TrayIcon trayIcon;
 
     public UpdatePanelExample() {
         setTitle("Update Panel Example");
-        setSize(400, 300);
+        setSize(610, 490);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         mainPanel = new JPanel(new BorderLayout());
@@ -32,10 +29,9 @@ public class UpdatePanelExample extends JFrame {
 
         mainPanel.add(scrollPane, BorderLayout.CENTER);
 
-        inputField = new JTextField();
-        mainPanel.add(inputField, BorderLayout.NORTH);
 
-        JButton switchPanelButton = new JButton("Switch Panel");
+        JButton switchPanelButton = new JButton("Edit");
+        switchPanelButton.setBackground(new Color(204, 204, 255));
         switchPanelButton.addActionListener(e -> switchToMessagePanel());
         mainPanel.add(switchPanelButton, BorderLayout.SOUTH);
 
@@ -86,11 +82,13 @@ public class UpdatePanelExample extends JFrame {
 
     private void switchToMessagePanel() {
         JPanel messageInputPanel = new JPanel(new BorderLayout());
-
+        name=new JLabel("Enter Notice : ");
         messageTextField = new JTextField();
-        messageInputPanel.add(messageTextField, BorderLayout.CENTER);
+        messageInputPanel.add(name);
+        messageInputPanel.add(messageTextField);
 
         JButton submitButton = new JButton("Submit");
+        submitButton.setBackground(new Color(204, 204, 255));
         submitButton.addActionListener(e -> {
             String messageText = messageTextField.getText().trim();
             if (!messageText.isEmpty()) {
@@ -112,9 +110,9 @@ public class UpdatePanelExample extends JFrame {
 
     private void switchToMainPanel() {
         mainPanel.removeAll();
-        mainPanel.add(inputField, BorderLayout.NORTH);
         
-        JButton switchPanelButton = new JButton("Switch Panel");
+        JButton switchPanelButton = new JButton("Edit");
+        switchPanelButton.setBackground(new Color(204, 204, 255));
         switchPanelButton.addActionListener(e -> switchToMessagePanel());
         mainPanel.add(switchPanelButton, BorderLayout.SOUTH);
 
@@ -211,27 +209,129 @@ public class UpdatePanelExample extends JFrame {
             example.setVisible(true);
         });
     }
-}
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainPanel = new javax.swing.JPanel();
+        messagePanel = new javax.swing.JPanel();
+        switchPanelButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        messageTextField = new javax.swing.JTextField();
+        submitButton = new javax.swing.JButton();
+        name = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout messagePanelLayout = new javax.swing.GroupLayout(messagePanel);
+        messagePanel.setLayout(messagePanelLayout);
+        messagePanelLayout.setHorizontalGroup(
+            messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 527, Short.MAX_VALUE)
+        );
+        messagePanelLayout.setVerticalGroup(
+            messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 336, Short.MAX_VALUE)
+        );
+
+        switchPanelButton.setBackground(new java.awt.Color(204, 204, 255));
+        switchPanelButton.setText("Edit");
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(switchPanelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 17, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(messagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(switchPanelButton)
+                .addContainerGap())
+        );
+
+        messageTextField.setText("jTextField1");
+        messageTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messageTextFieldActionPerformed(evt);
+            }
+        });
+
+        submitButton.setBackground(new java.awt.Color(204, 204, 255));
+        submitButton.setText("Submit");
+
+        name.setText("Enter Notice : ");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(name)
+                .addGap(18, 18, 18)
+                .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addComponent(submitButton))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(189, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void messageTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_messageTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel messagePanel;
+    private javax.swing.JTextField messageTextField;
+    private javax.swing.JLabel name;
+    private javax.swing.JButton submitButton;
+    private javax.swing.JButton switchPanelButton;
     // End of variables declaration//GEN-END:variables
 }

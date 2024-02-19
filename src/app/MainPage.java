@@ -56,9 +56,9 @@ public class MainPage extends javax.swing.JFrame {
 
         homePanel = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jpupdates = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jpupdates = new javax.swing.JPanel();
         jptimetable = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -103,28 +103,6 @@ public class MainPage extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Welcome to Activity Management");
 
-        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
-        homePanel.setLayout(homePanelLayout);
-        homePanelLayout.setHorizontalGroup(
-            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePanelLayout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
-        );
-        homePanelLayout.setVerticalGroup(
-            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePanelLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(210, 210, 210))
-        );
-
-        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
-
-        jpupdates.setBackground(new java.awt.Color(255, 255, 255));
-        jpupdates.setPreferredSize(new java.awt.Dimension(484, 404));
-
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,21 +128,44 @@ public class MainPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
+        homePanel.setLayout(homePanelLayout);
+        homePanelLayout.setHorizontalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(119, Short.MAX_VALUE))
+        );
+        homePanelLayout.setVerticalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
+        );
+
+        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
+
+        jpupdates.setBackground(new java.awt.Color(255, 255, 255));
+        jpupdates.setPreferredSize(new java.awt.Dimension(484, 404));
+
         javax.swing.GroupLayout jpupdatesLayout = new javax.swing.GroupLayout(jpupdates);
         jpupdates.setLayout(jpupdatesLayout);
         jpupdatesLayout.setHorizontalGroup(
             jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpupdatesLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(332, Short.MAX_VALUE))
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         jpupdatesLayout.setVerticalGroup(
             jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpupdatesLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+            .addGap(0, 490, Short.MAX_VALUE)
         );
 
         getContentPane().add(jpupdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
@@ -209,7 +210,6 @@ public class MainPage extends javax.swing.JFrame {
         timeTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         timeTable.setGridColor(new java.awt.Color(51, 51, 51));
         timeTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        timeTable.setShowGrid(true);
         timeTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(timeTable);
         timeTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -286,7 +286,6 @@ public class MainPage extends javax.swing.JFrame {
         examTable.setColumnSelectionAllowed(true);
         examTable.setGridColor(new java.awt.Color(0, 0, 0));
         examTable.setName(""); // NOI18N
-        examTable.setShowGrid(true);
         examTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(examTable);
 
@@ -392,7 +391,7 @@ public class MainPage extends javax.swing.JFrame {
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
         HomeLayout.setVerticalGroup(
@@ -419,7 +418,7 @@ public class MainPage extends javax.swing.JFrame {
         updates.setLayout(updatesLayout);
         updatesLayout.setHorizontalGroup(
             updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(updatesLayout.createSequentialGroup()
                     .addContainerGap()
@@ -457,7 +456,7 @@ public class MainPage extends javax.swing.JFrame {
             examLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(examLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
         examLayout.setVerticalGroup(
@@ -486,7 +485,7 @@ public class MainPage extends javax.swing.JFrame {
         timetable.setLayout(timetableLayout);
         timetableLayout.setHorizontalGroup(
             timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
+            .addGap(0, 76, Short.MAX_VALUE)
             .addGroup(timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(timetableLayout.createSequentialGroup()
                     .addContainerGap()
@@ -536,8 +535,8 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(NavigationPanelLayout.createSequentialGroup()
                 .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(exam, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                        .addComponent(updates, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addComponent(exam, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                        .addComponent(updates, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
                         .addComponent(timetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
