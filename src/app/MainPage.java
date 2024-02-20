@@ -634,6 +634,9 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(176,189,0));
         timetable.setBackground(new Color(79,66,255));
         exam.setBackground(new Color(79,66,255));
+        UpdatePanelExample up =new UpdatePanelExample();
+        up.setVisible(true);
+        dispose();
     }//GEN-LAST:event_updatesMouseClicked
 
     private void timetableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timetableMouseClicked
