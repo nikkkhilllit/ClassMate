@@ -1,7 +1,5 @@
 package app;
 
-
-
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -24,7 +22,6 @@ public class UpdatePanelExample extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         mainPanel = new JPanel(new BorderLayout());
-
         messagePanel = new JPanel();
         messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
         JScrollPane scrollPane = new JScrollPane(messagePanel);
@@ -35,6 +32,10 @@ public class UpdatePanelExample extends JFrame {
         JButton switchPanelButton = new JButton("Edit");
         switchPanelButton.setBackground(new Color(204, 204, 255));
         switchPanelButton.addActionListener(e -> switchToMessagePanel());
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // Align the button to the left
+        buttonPanel.add(switchPanelButton);
+    
         mainPanel.add(switchPanelButton, BorderLayout.SOUTH);
 
         add(mainPanel);
@@ -84,14 +85,35 @@ public class UpdatePanelExample extends JFrame {
     }
 
     private void switchToMessagePanel() {
-        JPanel messageInputPanel = new JPanel(new BorderLayout());
-        name=new JLabel("Enter Notice or Message (It will be Permenant) : ");
-        messageInputPanel.add(name,BorderLayout.NORTH);
+        JPanel messageInputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        messageInputPanel.setBackground(new Color(204, 204, 255));
+        name7=new JLabel("                                                                                                                                                                   ");
+        messageInputPanel.add(name7);
+        name4=new JLabel("                          Notice Edit Mode");
+        name4.setFont(new Font("Arial", Font.BOLD, 24)); // Set font size and style
+        name4.setForeground(new Color(102, 102, 255));
+        messageInputPanel.add(name4);
+        name3=new JLabel("                                                                                                                                                                                                                                                                                                                                                                        ");
+        messageInputPanel.add(name3);
+        name5=new JLabel("                                                                                                                                                                                                                                                                                                                                                                        ");
+        messageInputPanel.add(name5);
+        name6=new JLabel("                                                                                                                                                                                                                                                                                                                                                                        ");
+        messageInputPanel.add(name6);
+        name=new JLabel("Enter Notice or Message (It will be Permenant) :                                    ");
+        messageInputPanel.add(name);
+        name8=new JLabel("                                                                                                                                                                   ");
+        messageInputPanel.add(name8);
         messageTextField = new JTextField();
-        messageInputPanel.add(messageTextField,BorderLayout.CENTER);
-
+        messageTextField.setPreferredSize(new Dimension(400, 100));
+        messageInputPanel.add(messageTextField);
+        
+        name1=new JLabel("                                                                                                                                                            ");
+        name2=new JLabel("                                                                                                                                                                   ");
+        messageInputPanel.add(name1);
+        messageInputPanel.add(name2);
+        
         JButton submitButton = new JButton("Submit");
-        submitButton.setBackground(new Color(204, 204, 255));
+        submitButton.setBackground(new Color(153, 153, 255));
         submitButton.setPreferredSize(new Dimension(80, 30));
         
         submitButton.addActionListener(e -> {
@@ -105,7 +127,7 @@ public class UpdatePanelExample extends JFrame {
             }
         });
 
-        messageInputPanel.add(submitButton, BorderLayout.EAST);
+        messageInputPanel.add(submitButton);
 
         mainPanel.removeAll();
         mainPanel.add(messageInputPanel, BorderLayout.CENTER);
@@ -131,6 +153,7 @@ public class UpdatePanelExample extends JFrame {
         JPanel messageBox = createMessageBox(newText, timestamp);
         messagePanel.add(messageBox,0);// Add message box at index 0 (bottom)
         messagePanel.add(Box.createVerticalStrut(10),1);// Add spacing between message boxes
+        messagePanel.add(Box.createHorizontalStrut(10));
         messagePanel.revalidate();
         messagePanel.repaint(); // Ensure proper rendering
         
@@ -144,7 +167,10 @@ public class UpdatePanelExample extends JFrame {
         JPanel messageBox = new JPanel(new BorderLayout());
         messageBox.setPreferredSize(new Dimension(340, 30));
         messageBox.setBackground(new Color(204, 204, 255));
-        messageBox.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+         messageBox.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createEmptyBorder(5, 10, 5, 10), // Top, left, bottom, right
+        BorderFactory.createLineBorder(Color.BLACK) // Border color
+    ));
 
         JLabel messageLabel = new JLabel(messageText);
         messageLabel.setForeground(Color.BLACK);
@@ -221,6 +247,14 @@ public class UpdatePanelExample extends JFrame {
 
         mainPanel = new javax.swing.JPanel();
         messagePanel = new javax.swing.JPanel();
+        name1 = new javax.swing.JLabel();
+        name2 = new javax.swing.JLabel();
+        name3 = new javax.swing.JLabel();
+        name4 = new javax.swing.JLabel();
+        name5 = new javax.swing.JLabel();
+        name6 = new javax.swing.JLabel();
+        name7 = new javax.swing.JLabel();
+        name8 = new javax.swing.JLabel();
         switchPanelButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         messageTextField = new javax.swing.JTextField();
@@ -229,15 +263,80 @@ public class UpdatePanelExample extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        name1.setText("jLabel1");
+
+        name2.setText("jLabel1");
+
+        name3.setText("jLabel1");
+
+        name4.setText("jLabel1");
+
+        name5.setText("jLabel1");
+
+        name6.setText("jLabel1");
+
+        name7.setText("jLabel1");
+
+        name8.setText("jLabel2");
+
         javax.swing.GroupLayout messagePanelLayout = new javax.swing.GroupLayout(messagePanel);
         messagePanel.setLayout(messagePanelLayout);
         messagePanelLayout.setHorizontalGroup(
             messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messagePanelLayout.createSequentialGroup()
+                .addGap(0, 169, Short.MAX_VALUE)
+                .addComponent(name5)
+                .addGap(107, 107, 107)
+                .addComponent(name3)
+                .addGap(183, 183, 183))
+            .addGroup(messagePanelLayout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(name2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(name4)
+                .addGap(87, 87, 87))
+            .addGroup(messagePanelLayout.createSequentialGroup()
+                .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(messagePanelLayout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(name1))
+                    .addGroup(messagePanelLayout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(name7)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messagePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messagePanelLayout.createSequentialGroup()
+                        .addComponent(name6)
+                        .addGap(144, 144, 144))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, messagePanelLayout.createSequentialGroup()
+                        .addComponent(name8)
+                        .addGap(106, 106, 106))))
         );
         messagePanelLayout.setVerticalGroup(
             messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
+            .addGroup(messagePanelLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(name6)
+                .addGap(27, 27, 27)
+                .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(name2)
+                    .addComponent(name4))
+                .addGap(46, 46, 46)
+                .addComponent(name1)
+                .addGroup(messagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(messagePanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(name3))
+                    .addGroup(messagePanelLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(name5)))
+                .addGap(19, 19, 19)
+                .addComponent(name7)
+                .addGap(18, 18, 18)
+                .addComponent(name8)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         switchPanelButton.setBackground(new java.awt.Color(204, 204, 255));
@@ -337,6 +436,14 @@ public class UpdatePanelExample extends JFrame {
     private javax.swing.JPanel messagePanel;
     private javax.swing.JTextField messageTextField;
     private javax.swing.JLabel name;
+    private javax.swing.JLabel name1;
+    private javax.swing.JLabel name2;
+    private javax.swing.JLabel name3;
+    private javax.swing.JLabel name4;
+    private javax.swing.JLabel name5;
+    private javax.swing.JLabel name6;
+    private javax.swing.JLabel name7;
+    private javax.swing.JLabel name8;
     private javax.swing.JButton submitButton;
     private javax.swing.JButton switchPanelButton;
     // End of variables declaration//GEN-END:variables
