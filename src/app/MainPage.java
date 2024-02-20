@@ -571,15 +571,15 @@ public class MainPage extends javax.swing.JFrame {
         UserLoginInfoPanelLayout.setVerticalGroup(
             UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(UsernameLabel))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(TimeLabel))
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addContainerGap(413, Short.MAX_VALUE))
         );
 
         getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 200, 500));
