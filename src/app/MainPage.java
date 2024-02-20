@@ -600,14 +600,14 @@ public class MainPage extends javax.swing.JFrame {
             Connection con=null;
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
             Statement stmt=con.createStatement();
-            stmt.executeUpdate("create table clg(TeacherName varchar(20),Subject varchar(100))");
+            /*stmt.executeUpdate("create table clg(TeacherName varchar(20),Subject varchar(100))");
             stmt.executeUpdate("insert into clg values('PD','SE')");
             stmt.executeUpdate("insert into clg values('RP','Advance Java')");
             stmt.executeUpdate("insert into clg values('KKG','Android')");
             stmt.executeUpdate("insert into clg values('SSW','Computer Network')");
             stmt.executeUpdate("insert into clg values('SSV','Linear Algebra')");
             stmt.executeUpdate("insert into clg values('PD','FOA')");
-            stmt.executeUpdate("insert into clg values('APR','.NET')");
+            stmt.executeUpdate("insert into clg values('APR','.NET')");*/
             
             ResultSet rs = stmt.executeQuery("select * from clg");
             
@@ -634,8 +634,8 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(176,189,0));
         timetable.setBackground(new Color(79,66,255));
         exam.setBackground(new Color(79,66,255));
-        UpdatePanelExample up =new UpdatePanelExample();
-        up.setVisible(true);
+        UpdatePanelExample updatePanel = new UpdatePanelExample();
+        jpupdates.add(updatePanel);
         dispose();
     }//GEN-LAST:event_updatesMouseClicked
 

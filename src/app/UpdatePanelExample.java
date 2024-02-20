@@ -130,9 +130,10 @@ public class UpdatePanelExample extends JFrame {
     private void addMessage(String newText, String timestamp) {
         JPanel messageBox = createMessageBox(newText, timestamp);
         messagePanel.add(messageBox,0);// Add message box at index 0 (bottom)
-        messagePanel.add(Box.createVerticalStrut(5));// Add spacing between message boxes
+        messagePanel.add(Box.createVerticalStrut(10),1);// Add spacing between message boxes
         messagePanel.revalidate();
         messagePanel.repaint(); // Ensure proper rendering
+        
     }
 
     private void addMessage(String newText) {
