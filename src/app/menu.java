@@ -1,8 +1,10 @@
 package app;
 
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -66,14 +68,15 @@ public class menu extends javax.swing.JFrame {
         jpstudent = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jpteacher = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
-        tab1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        tab2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        studentPanel = new javax.swing.JPanel();
+        studentLabel = new javax.swing.JLabel();
+        teacherPanel = new javax.swing.JPanel();
+        teacherLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,43 +84,75 @@ public class menu extends javax.swing.JFrame {
 
         jpstudent.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Student Username"
+                "Students"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setRowHeight(40);
+        jTable1.setShowGrid(false);
+        jTable1.getTableHeader().setResizingAllowed(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(79, 66, 255));
+        jLabel2.setText("ADMIN PANEL");
 
         javax.swing.GroupLayout jpstudentLayout = new javax.swing.GroupLayout(jpstudent);
         jpstudent.setLayout(jpstudentLayout);
         jpstudentLayout.setHorizontalGroup(
             jpstudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpstudentLayout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE)
+                .addGroup(jpstudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpstudentLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(221, 221, 221))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpstudentLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(134, 134, 134))))
         );
         jpstudentLayout.setVerticalGroup(
             jpstudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpstudentLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel2)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jpteacher.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable2.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Teacher Username"
+                "Teachers"
             }
         ));
+        jTable2.setRowHeight(40);
+        jTable2.getTableHeader().setResizingAllowed(false);
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jpteacherLayout = new javax.swing.GroupLayout(jpteacher);
@@ -125,16 +160,16 @@ public class menu extends javax.swing.JFrame {
         jpteacherLayout.setHorizontalGroup(
             jpteacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpteacherLayout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
+                .addContainerGap(145, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
         );
         jpteacherLayout.setVerticalGroup(
             jpteacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpteacherLayout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(129, 129, 129))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -154,59 +189,59 @@ public class menu extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(79, 66, 255));
 
-        tab1.setBackground(new java.awt.Color(79, 66, 255));
-        tab1.addMouseListener(new java.awt.event.MouseAdapter() {
+        studentPanel.setBackground(new java.awt.Color(79, 66, 255));
+        studentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab1MouseClicked(evt);
+                studentPanelMouseClicked(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Student");
+        studentLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        studentLabel.setForeground(new java.awt.Color(255, 255, 255));
+        studentLabel.setText("Student");
 
-        javax.swing.GroupLayout tab1Layout = new javax.swing.GroupLayout(tab1);
-        tab1.setLayout(tab1Layout);
-        tab1Layout.setHorizontalGroup(
-            tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab1Layout.createSequentialGroup()
+        javax.swing.GroupLayout studentPanelLayout = new javax.swing.GroupLayout(studentPanel);
+        studentPanel.setLayout(studentPanelLayout);
+        studentPanelLayout.setHorizontalGroup(
+            studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentPanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel3)
+                .addComponent(studentLabel)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
-        tab1Layout.setVerticalGroup(
-            tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab1Layout.createSequentialGroup()
+        studentPanelLayout.setVerticalGroup(
+            studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentPanelLayout.createSequentialGroup()
                 .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(studentLabel)
                 .addContainerGap())
         );
 
-        tab2.setBackground(new java.awt.Color(79, 66, 255));
-        tab2.addMouseListener(new java.awt.event.MouseAdapter() {
+        teacherPanel.setBackground(new java.awt.Color(79, 66, 255));
+        teacherPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab2MouseClicked(evt);
+                teacherPanelMouseClicked(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Teacher");
+        teacherLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        teacherLabel.setForeground(new java.awt.Color(255, 255, 255));
+        teacherLabel.setText("Teacher");
 
-        javax.swing.GroupLayout tab2Layout = new javax.swing.GroupLayout(tab2);
-        tab2.setLayout(tab2Layout);
-        tab2Layout.setHorizontalGroup(
-            tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab2Layout.createSequentialGroup()
+        javax.swing.GroupLayout teacherPanelLayout = new javax.swing.GroupLayout(teacherPanel);
+        teacherPanel.setLayout(teacherPanelLayout);
+        teacherPanelLayout.setHorizontalGroup(
+            teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(teacherPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel5)
+                .addComponent(teacherLabel)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-        tab2Layout.setVerticalGroup(
-            tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab2Layout.createSequentialGroup()
+        teacherPanelLayout.setVerticalGroup(
+            teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, teacherPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(teacherLabel)
                 .addContainerGap())
         );
 
@@ -215,18 +250,18 @@ public class menu extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(tab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(studentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tab2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(teacherPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(tab1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tab2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(studentPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(teacherPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -239,7 +274,7 @@ public class menu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -247,9 +282,11 @@ public class menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1MouseClicked
+    private void studentPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentPanelMouseClicked
         try {                                  
             jpstudent.setVisible(true);
+            studentPanel.setBackground(new Color(176,189,0));
+            teacherPanel.setBackground(new Color(79,66,255));
             jpteacher.setVisible(false);
             Connection con=null;
             try {
@@ -260,12 +297,12 @@ public class menu extends javax.swing.JFrame {
             
             Statement stmt=con.createStatement();
             
-            ResultSet rs = stmt.executeQuery("select * from clg");
+            ResultSet rs = stmt.executeQuery("select * from students");
             
             while(rs.next()){
-                String TeacherName = rs.getString("TeacherName");
+                String StudentName = rs.getString("username");
                 
-                String tbData[]={TeacherName};
+                String tbData[]={StudentName};
                 DefaultTableModel tbl = (DefaultTableModel)jTable1.getModel();
                 tbl.addRow(tbData);
             }
@@ -273,23 +310,25 @@ public class menu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_tab1MouseClicked
+    }//GEN-LAST:event_studentPanelMouseClicked
 
-    private void tab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab2MouseClicked
+    private void teacherPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherPanelMouseClicked
         try {                                  
             jpstudent.setVisible(false);
             jpteacher.setVisible(true);
+            teacherPanel.setBackground(new Color(176,189,0));
+            studentPanel.setBackground(new Color(79,66,255));
             Connection con=null;
             try {
-                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root",DB_PASSWORD);
             } catch (SQLException ex) {
                 Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
             }
             Statement stmt=con.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from clg");
+            ResultSet rs = stmt.executeQuery("select * from teachers");
             
             while(rs.next()){
-                String TeacherName = rs.getString("TeacherName");
+                String TeacherName = rs.getString("username");
                 
                 String tbData[]={TeacherName};
                 DefaultTableModel tbl = (DefaultTableModel)jTable2.getModel();
@@ -299,13 +338,12 @@ public class menu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_tab2MouseClicked
+    }//GEN-LAST:event_teacherPanelMouseClicked
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -314,7 +352,9 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JPanel jpstudent;
     private javax.swing.JPanel jpteacher;
-    private javax.swing.JPanel tab1;
-    private javax.swing.JPanel tab2;
+    private javax.swing.JLabel studentLabel;
+    private javax.swing.JPanel studentPanel;
+    private javax.swing.JLabel teacherLabel;
+    private javax.swing.JPanel teacherPanel;
     // End of variables declaration//GEN-END:variables
 }
