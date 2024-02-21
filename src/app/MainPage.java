@@ -29,15 +29,14 @@ public class MainPage extends javax.swing.JFrame {
      */
     private String loginUsername;
     private static final String DB_PASSWORD="pranav@030429";
+    private static final LocalTime currentTime =LocalTime.now();
     public MainPage(String u1) {
         loginUsername=u1;
         initComponents();
         UsernameLabel.setText(loginUsername);
-        LocalTime currentTime = LocalTime.now();
-
         // Format the time using DateTimeFormatter
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String formattedTime = currentTime.format(formatter);
+        final String formattedTime = currentTime.format(formatter);
 
         // Set the formatted time to the TimeLabel
         TimeLabel.setText(formattedTime);
@@ -378,7 +377,7 @@ public class MainPage extends javax.swing.JFrame {
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
         );
         HomeLayout.setVerticalGroup(
@@ -405,7 +404,7 @@ public class MainPage extends javax.swing.JFrame {
         updates.setLayout(updatesLayout);
         updatesLayout.setHorizontalGroup(
             updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 60, Short.MAX_VALUE)
             .addGroup(updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(updatesLayout.createSequentialGroup()
                     .addContainerGap()
@@ -443,7 +442,7 @@ public class MainPage extends javax.swing.JFrame {
             examLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(examLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
         );
         examLayout.setVerticalGroup(
@@ -451,7 +450,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(examLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         timetable.setBackground(new java.awt.Color(79, 66, 255));
@@ -598,9 +597,9 @@ public class MainPage extends javax.swing.JFrame {
             timetable.setBackground(new Color(79,66,255));
             exam.setBackground(new Color(79,66,255));
             Connection con=null;
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root",DB_PASSWORD);
             Statement stmt=con.createStatement();
-            stmt.executeUpdate("create table clg(TeacherName varchar(20),Subject varchar(100))");
+            stmt.executeUpdate("create table if not exists clg(TeacherName varchar(20),Subject varchar(100))");
             stmt.executeUpdate("insert into clg values('PD','SE')");
             stmt.executeUpdate("insert into clg values('RP','Advance Java')");
             stmt.executeUpdate("insert into clg values('KKG','Android')");

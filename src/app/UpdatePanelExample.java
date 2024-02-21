@@ -15,6 +15,7 @@ import java.awt.TrayIcon.MessageType;
 public class UpdatePanelExample extends JFrame {
       
     private Connection conn;
+    private static final String DB_PASSWORD="pranav@030429";
     private static final Logger LOGGER = Logger.getLogger(UpdatePanelExample.class.getName());
     private TrayIcon trayIcon;
 
@@ -50,7 +51,7 @@ public class UpdatePanelExample extends JFrame {
     private void connectToDatabase() {
         try {
             LOGGER.info("Connecting to database...");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/Messages","ckt","ckt");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/new","root",DB_PASSWORD);
             LOGGER.info("Connected to database.");
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error connecting to database", e);
@@ -61,7 +62,7 @@ public class UpdatePanelExample extends JFrame {
     private void createTable() {
         try {
             Statement stmt = conn.createStatement();
-            stmt.execute("CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT, timestamp TIMESTAMP)");
+            stmt.execute("CREATE TABLE IF NOT EXISTS messages (id INT PRIMARY KEY AUTOINCREMENT, text VARCHAR(45), timestamp TIMESTAMP)");
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error creating table in database", e);
             JOptionPane.showMessageDialog(this, "Error creating table in database", "Error", JOptionPane.ERROR_MESSAGE);
@@ -129,7 +130,7 @@ public class UpdatePanelExample extends JFrame {
 
     private void addMessage(String newText, String timestamp) {
         JPanel messageBox = createMessageBox(newText, timestamp);
-        messagePanel.add(messageBox,0);// Add message box at index 0 (bottom)
+        messagePanel.add(messageBox);// Add message box at index 0 (bottom)
         messagePanel.add(Box.createVerticalStrut(5));// Add spacing between message boxes
         messagePanel.revalidate();
         messagePanel.repaint(); // Ensure proper rendering
@@ -286,8 +287,9 @@ public class UpdatePanelExample extends JFrame {
                 .addComponent(name)
                 .addGap(18, 18, 18)
                 .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                .addComponent(submitButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addComponent(submitButton)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,10 +299,7 @@ public class UpdatePanelExample extends JFrame {
                     .addComponent(messageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(189, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(submitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
