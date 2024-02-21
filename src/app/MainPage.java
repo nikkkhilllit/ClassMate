@@ -77,10 +77,10 @@ public class MainPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         updates = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        exam = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         timetable = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        exam = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         logOutBtn = new javax.swing.JButton();
         UserLoginInfoPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -119,26 +119,25 @@ public class MainPage extends javax.swing.JFrame {
         homePanelLayout.setHorizontalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePanelLayout.createSequentialGroup()
-                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
+                .addContainerGap(121, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(236, 236, 236))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(211, 211, 211))
         );
 
-        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
+        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 470));
 
         jpupdates.setBackground(new java.awt.Color(255, 255, 255));
         jpupdates.setPreferredSize(new java.awt.Dimension(484, 404));
@@ -151,10 +150,10 @@ public class MainPage extends javax.swing.JFrame {
         );
         jpupdatesLayout.setVerticalGroup(
             jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jpupdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
+        getContentPane().add(jpupdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 470));
 
         jptimetable.setBackground(new java.awt.Color(255, 255, 255));
         jptimetable.setPreferredSize(new java.awt.Dimension(480, 404));
@@ -236,12 +235,12 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addGap(61, 61, 61)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(editButton)
                 .addContainerGap())
         );
 
-        getContentPane().add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 490));
+        getContentPane().add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 470));
 
         jpexam.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -347,12 +346,12 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(editExamBtn)
                 .addGap(55, 55, 55))
         );
 
-        getContentPane().add(jpexam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 610, 490));
+        getContentPane().add(jpexam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 610, 470));
 
         NavigationPanel.setBackground(new java.awt.Color(79, 66, 255));
 
@@ -377,8 +376,8 @@ public class MainPage extends javax.swing.JFrame {
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         HomeLayout.setVerticalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,21 +403,56 @@ public class MainPage extends javax.swing.JFrame {
         updates.setLayout(updatesLayout);
         updatesLayout.setHorizontalGroup(
             updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 96, Short.MAX_VALUE)
             .addGroup(updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(updatesLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         updatesLayout.setVerticalGroup(
             updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 43, Short.MAX_VALUE)
             .addGroup(updatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(updatesLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        timetable.setBackground(new java.awt.Color(79, 66, 255));
+        timetable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                timetableMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setBackground(new java.awt.Color(79, 66, 255));
+        jLabel3.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Time Table");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout timetableLayout = new javax.swing.GroupLayout(timetable);
+        timetable.setLayout(timetableLayout);
+        timetableLayout.setHorizontalGroup(
+            timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 96, Short.MAX_VALUE)
+            .addGroup(timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(timetableLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        timetableLayout.setVerticalGroup(
+            timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+            .addGroup(timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(timetableLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         exam.setBackground(new java.awt.Color(79, 66, 255));
@@ -442,50 +476,15 @@ public class MainPage extends javax.swing.JFrame {
             examLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(examLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         examLayout.setVerticalGroup(
             examLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(examLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-
-        timetable.setBackground(new java.awt.Color(79, 66, 255));
-        timetable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                timetableMouseClicked(evt);
-            }
-        });
-
-        jLabel3.setBackground(new java.awt.Color(79, 66, 255));
-        jLabel3.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Time Table");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout timetableLayout = new javax.swing.GroupLayout(timetable);
-        timetable.setLayout(timetableLayout);
-        timetableLayout.setHorizontalGroup(
-            timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 76, Short.MAX_VALUE)
-            .addGroup(timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(timetableLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel3)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        timetableLayout.setVerticalGroup(
-            timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(timetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(timetableLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         logOutBtn.setBackground(new java.awt.Color(79, 66, 255));
@@ -505,34 +504,36 @@ public class MainPage extends javax.swing.JFrame {
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavigationPanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(updates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updates, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(timetable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(exam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
-                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(exam, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         NavigationPanelLayout.setVerticalGroup(
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavigationPanelLayout.createSequentialGroup()
-                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(exam, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                        .addComponent(updates, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                        .addComponent(timetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(exam, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(updates, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(timetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(NavigationPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logOutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
-        getContentPane().add(NavigationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(NavigationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         UserLoginInfoPanel.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -570,18 +571,18 @@ public class MainPage extends javax.swing.JFrame {
         UserLoginInfoPanelLayout.setVerticalGroup(
             UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(40, 40, 40)
                 .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(UsernameLabel))
-                .addGap(28, 28, 28)
+                .addGap(33, 33, 33)
                 .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(TimeLabel))
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
 
-        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 200, 500));
+        getContentPane().add(UserLoginInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 200, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -599,7 +600,7 @@ public class MainPage extends javax.swing.JFrame {
             Connection con=null;
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root",DB_PASSWORD);
             Statement stmt=con.createStatement();
-            stmt.executeUpdate("create table if not exists clg(TeacherName varchar(20),Subject varchar(100))");
+            stmt.executeUpdate("create table if not exists clg(TeacherName varchar(45),Subject varchar(100))");
             stmt.executeUpdate("insert into clg values('PD','SE')");
             stmt.executeUpdate("insert into clg values('RP','Advance Java')");
             stmt.executeUpdate("insert into clg values('KKG','Android')");
@@ -633,8 +634,9 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(176,189,0));
         timetable.setBackground(new Color(79,66,255));
         exam.setBackground(new Color(79,66,255));
-        UpdatePanelExample up =new UpdatePanelExample();
-        up.setVisible(true);
+        UpdatePanelExample updatePanel = new UpdatePanelExample();
+        //jpupdates.add(updatePanel);
+        updatePanel.setVisible(true);
         dispose();
     }//GEN-LAST:event_updatesMouseClicked
 
@@ -761,7 +763,7 @@ public class MainPage extends javax.swing.JFrame {
     try {
         // Fetch data from the database and add rows to the model
         con= DriverManager.getConnection("jdbc:mysql://localhost:3306/lecturedatabase", "root", DB_PASSWORD);
-        pstmt=con.prepareStatement("SELECT * FROM timetable");
+        pstmt = con.prepareStatement("SELECT * FROM timetable ORDER BY `Start Time` ASC");
         rs=pstmt.executeQuery();
 
         while (rs.next()) {

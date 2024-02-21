@@ -223,7 +223,21 @@ public class LoginPage extends javax.swing.JFrame {
         ResultSet rs=null;
         if(!studentRadioBtn.isSelected() && !teacherRadioBtn.isSelected()){
             showMessageDialog("Please Select any one 'Student' or 'Teacher' ","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        if(u1.isEmpty() && p1.isEmpty()){
+            showMessageDialog("Please fill in both the fields","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if(u1.isEmpty() && !p1.isEmpty()){
+            showMessageDialog("Username cannot be Blank!!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if(!u1.isEmpty() && p1.isEmpty()){
+            showMessageDialog("Password cannot be Blank!!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if(studentRadioBtn.isSelected()){
             try{
                 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
@@ -231,7 +245,7 @@ public class LoginPage extends javax.swing.JFrame {
                 preparedstatement.setString(1,u1);
                 rs=preparedstatement.executeQuery();
                 if(!rs.isBeforeFirst()){
-                    showMessageDialog("User not found in database \nPlease Sign Up","Error",JOptionPane.ERROR_MESSAGE);
+                    showMessageDialog("User not found in database!! \nPlease Sign Up","Error",JOptionPane.ERROR_MESSAGE);
                 }
                 else{
                     while(rs.next()){
