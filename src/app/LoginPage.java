@@ -174,8 +174,8 @@ public class LoginPage extends javax.swing.JFrame {
                         .addComponent(showPassword)))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(signUp, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(signUp))
                 .addGap(55, 55, 55)
                 .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(46, 46, 46))
@@ -247,6 +247,11 @@ public class LoginPage extends javax.swing.JFrame {
         }
         else if(!u1.isEmpty() && p1.isEmpty()){
             showMessageDialog("Password cannot be Blank!!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!u1.matches("[a-zA-Z0-9]+")) {
+            showMessageDialog("Username should only contain Alphabets and Numbers", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         

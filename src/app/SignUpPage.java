@@ -42,6 +42,7 @@ public class SignUpPage extends javax.swing.JFrame {
         confirmPasswordField = new javax.swing.JPasswordField();
         signupbtn = new javax.swing.JButton();
         showPassword = new javax.swing.JCheckBox();
+        confirmPassword = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sign Up");
@@ -72,7 +73,6 @@ public class SignUpPage extends javax.swing.JFrame {
 
         backLoginBtn.setBackground(new java.awt.Color(79, 66, 255));
         backLoginBtn.setForeground(new java.awt.Color(255, 255, 255));
-        backLoginBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\ClassMate\\src\\app\\back_btn.png")); // NOI18N
         backLoginBtn.setBorder(null);
         backLoginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backLoginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +161,16 @@ public class SignUpPage extends javax.swing.JFrame {
             }
         });
 
+        confirmPassword.setBackground(new java.awt.Color(255, 255, 255));
+        confirmPassword.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        confirmPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        confirmPassword.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-show-password-24.png")); // NOI18N
+        confirmPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -186,7 +196,9 @@ public class SignUpPage extends javax.swing.JFrame {
                             .addComponent(signupbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(showPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(showPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -205,7 +217,9 @@ public class SignUpPage extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmPassword))
                 .addGap(49, 49, 49)
                 .addComponent(signupbtn)
                 .addContainerGap(68, Short.MAX_VALUE))
@@ -238,17 +252,46 @@ public class SignUpPage extends javax.swing.JFrame {
         String confirm_p1=confirmPasswordField.getText();
         if(!studentRadioBtn.isSelected() && !teacherRadioBtn.isSelected()){
             showMessageDialog("Please Select any one 'Student' or 'Teacher' ","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        if(new_u1.isEmpty() && new_p1.isEmpty() && confirm_p1.isEmpty()){
+            showMessageDialog("Please fill in all fields","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if(new_u1.isEmpty() && !new_p1.isEmpty()){
+            showMessageDialog("Username cannot be Blank!!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if(!new_u1.isEmpty() && new_p1.isEmpty() && confirm_p1.isEmpty()){
+            showMessageDialog("Password cannot be Blank!!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if(!new_u1.isEmpty() && !new_p1.isEmpty() && confirm_p1.isEmpty()){
+            showMessageDialog("Confirm Password cannot be Blank!!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!new_u1.matches("[a-zA-Z0-9]+")) {
+            showMessageDialog("Username should only contain Alphabets and Numbers", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!new_p1.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{7,}$")) {
+        showMessageDialog("Password should have at least 7 characters, one uppercase letter, one lowercase letter, one digit, and one special character", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+        
         if(!confirm_p1.equals(new_p1)){
             try {
                 showMessageDialog("Confirm Password don't match the password","Password not same",JOptionPane.ERROR_MESSAGE);
-                Thread.sleep(800);
-                LoginPage L1 =new LoginPage();
-                L1.setVisible(true);
+                Thread.sleep(100);
+                SignUpPage s1 =new SignUpPage();
+                s1.setVisible(true);
                 dispose();
             } catch (InterruptedException ex) {
                 Logger.getLogger(SignUpPage.class.getName()).log(Level.SEVERE, null, ex);
             }
+            return;
         }
         Connection con=null;
         Connection con2=null;
@@ -267,6 +310,15 @@ public class SignUpPage extends javax.swing.JFrame {
             if(rs.isBeforeFirst()){
 //                System.out.println("User already exists");
                 showMessageDialog("User already exists","Error",JOptionPane.ERROR_MESSAGE);
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SignUpPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                SignUpPage s1 =new SignUpPage();
+                s1.setVisible(true);
+                dispose();
+                return;
 //                Alert alert= new Alert(Alert.AlertType.ERROR);
 //                alert.setContentText("Username already taken");
 //                alert.show();
@@ -302,7 +354,7 @@ public class SignUpPage extends javax.swing.JFrame {
                     Logger.getLogger(SignUpPage.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 LoginPage L1 =new LoginPage();
-                L1.show();
+                L1.setVisible(true);
                 dispose();
             }
         }
@@ -315,6 +367,15 @@ public class SignUpPage extends javax.swing.JFrame {
             if(rs2.isBeforeFirst()){
 //                System.out.println("User already exists");
                 showMessageDialog("User already exists","Error",JOptionPane.ERROR_MESSAGE);
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SignUpPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                SignUpPage s1 =new SignUpPage();
+                s1.setVisible(true);
+                dispose();
+                return;
 //                Alert alert= new Alert(Alert.AlertType.ERROR);
 //                alert.setContentText("Username already taken");
 //                alert.show();
@@ -372,6 +433,15 @@ public class SignUpPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_showPasswordActionPerformed
 
+    private void confirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordActionPerformed
+        // TODO add your handling code here:
+         if (confirmPassword.isSelected()) {
+            confirmPasswordField.setEchoChar((char) 0); // Show password
+        } else {
+            confirmPasswordField.setEchoChar('\u2022'); // Mask password
+        }
+    }//GEN-LAST:event_confirmPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -411,6 +481,7 @@ public class SignUpPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backLoginBtn;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox confirmPassword;
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
