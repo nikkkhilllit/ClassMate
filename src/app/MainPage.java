@@ -11,7 +11,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
@@ -40,6 +39,8 @@ public class MainPage extends javax.swing.JFrame {
 
         // Set the formatted time to the TimeLabel
         TimeLabel.setText(formattedTime);
+        populateTeacherTable();
+        populateUpdatesTable();
         populateTimeTable();
         populateExamTable();
 
@@ -54,16 +55,6 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        homePanel = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jpupdates = new javax.swing.JPanel();
-        jptimetable = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        timeTable = new javax.swing.JTable();
-        editButton = new javax.swing.JButton();
         jpexam = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         examTable = new javax.swing.JTable();
@@ -72,6 +63,20 @@ public class MainPage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         editExamBtn = new javax.swing.JButton();
+        homePanel = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jpupdates = new javax.swing.JPanel();
+        updatesLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        updatesTable = new javax.swing.JTable();
+        updateBtn = new javax.swing.JButton();
+        jptimetable = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        timeTable = new javax.swing.JTable();
+        editButton = new javax.swing.JButton();
         NavigationPanel = new javax.swing.JPanel();
         Home = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -94,155 +99,9 @@ public class MainPage extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(543, 385));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        homePanel.setBackground(new java.awt.Color(255, 255, 255));
-        homePanel.setPreferredSize(new java.awt.Dimension(480, 404));
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Welcome to Activity Management");
-
-        jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Teacher", "Subject"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
-        homePanel.setLayout(homePanelLayout);
-        homePanelLayout.setHorizontalGroup(
-            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePanelLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
-        );
-        homePanelLayout.setVerticalGroup(
-            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(211, 211, 211))
-        );
-
-        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 470));
-
-        jpupdates.setBackground(new java.awt.Color(255, 255, 255));
-        jpupdates.setPreferredSize(new java.awt.Dimension(484, 404));
-
-        javax.swing.GroupLayout jpupdatesLayout = new javax.swing.GroupLayout(jpupdates);
-        jpupdates.setLayout(jpupdatesLayout);
-        jpupdatesLayout.setHorizontalGroup(
-            jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        jpupdatesLayout.setVerticalGroup(
-            jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jpupdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 470));
-
-        jptimetable.setBackground(new java.awt.Color(255, 255, 255));
-        jptimetable.setPreferredSize(new java.awt.Dimension(480, 404));
-
-        jLabel12.setBackground(new java.awt.Color(220, 220, 220));
-        jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 36)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("TimeTable");
-
-        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
-
-        timeTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        timeTable.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
-        timeTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "StartTime ", "End Time ", "Monday ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        timeTable.setCellSelectionEnabled(true);
-        timeTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        timeTable.setGridColor(new java.awt.Color(51, 51, 51));
-        timeTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        timeTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(timeTable);
-        timeTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-
-        editButton.setBackground(new java.awt.Color(79, 66, 255));
-        editButton.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        editButton.setForeground(new java.awt.Color(255, 255, 255));
-        editButton.setText("Edit");
-        editButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jptimetableLayout = new javax.swing.GroupLayout(jptimetable);
-        jptimetable.setLayout(jptimetableLayout);
-        jptimetableLayout.setHorizontalGroup(
-            jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jptimetableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jptimetableLayout.createSequentialGroup()
-                        .addGap(0, 541, Short.MAX_VALUE)
-                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jptimetableLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169))
-        );
-        jptimetableLayout.setVerticalGroup(
-            jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jptimetableLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel12)
-                .addGap(61, 61, 61)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(editButton)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 470));
-
         jpexam.setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         examTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         examTable.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
@@ -268,11 +127,19 @@ public class MainPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        examTable.setColumnSelectionAllowed(true);
+        examTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         examTable.setGridColor(new java.awt.Color(0, 0, 0));
         examTable.setName(""); // NOI18N
+        examTable.setRowHeight(35);
+        examTable.setShowHorizontalLines(true);
+        examTable.getTableHeader().setResizingAllowed(false);
         examTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(examTable);
+        if (examTable.getColumnModel().getColumnCount() > 0) {
+            examTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+            examTable.getColumnModel().getColumn(1).setPreferredWidth(10);
+            examTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+        }
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
@@ -308,50 +175,293 @@ public class MainPage extends javax.swing.JFrame {
         jpexamLayout.setHorizontalGroup(
             jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpexamLayout.createSequentialGroup()
-                .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpexamLayout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(jLabel8))
-                    .addGroup(jpexamLayout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(jLabel5)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jpexamLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
                         .addGap(0, 122, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(123, 123, 123))
+                    .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(176, 176, 176))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
                                 .addComponent(editExamBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15))
+                                .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(123, 123, 123))))
-                    .addComponent(jScrollPane2)))
+                                .addComponent(jLabel7)
+                                .addGap(184, 184, 184))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(205, 205, 205))
+            .addGroup(jpexamLayout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpexamLayout.setVerticalGroup(
             jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(editExamBtn)
-                .addGap(55, 55, 55))
+                .addGap(29, 29, 29))
         );
 
-        getContentPane().add(jpexam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 610, 470));
+        getContentPane().add(jpexam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
+
+        homePanel.setBackground(new java.awt.Color(255, 255, 255));
+        homePanel.setPreferredSize(new java.awt.Dimension(480, 404));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Welcome to Activity Management");
+
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Teacher", "Subject"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setColumnSelectionAllowed(false);
+        jTable1.setGridColor(new java.awt.Color(51, 51, 51));
+        jTable1.setRowHeight(40);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setResizingAllowed(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
+        homePanel.setLayout(homePanelLayout);
+        homePanelLayout.setHorizontalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addContainerGap(121, Short.MAX_VALUE)
+                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(139, 139, 139))))
+        );
+        homePanelLayout.setVerticalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(230, 230, 230))
+        );
+
+        getContentPane().add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
+
+        jpupdates.setBackground(new java.awt.Color(255, 255, 255));
+        jpupdates.setPreferredSize(new java.awt.Dimension(484, 404));
+
+        updatesLabel.setBackground(new java.awt.Color(220, 220, 220));
+        updatesLabel.setFont(new java.awt.Font("Dubai Medium", 1, 36)); // NOI18N
+        updatesLabel.setForeground(new java.awt.Color(102, 102, 255));
+        updatesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        updatesLabel.setText("Updates");
+
+        updatesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Notice", "Time"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        updatesTable.setGridColor(new java.awt.Color(51, 51, 51));
+        updatesTable.setRowHeight(35);
+        updatesTable.setShowHorizontalLines(true);
+        updatesTable.getTableHeader().setResizingAllowed(false);
+        updatesTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(updatesTable);
+        if (updatesTable.getColumnModel().getColumnCount() > 0) {
+            updatesTable.getColumnModel().getColumn(0).setResizable(false);
+            updatesTable.getColumnModel().getColumn(0).setPreferredWidth(15);
+            updatesTable.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        updateBtn.setBackground(new java.awt.Color(79, 66, 255));
+        updateBtn.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Update");
+        updateBtn.setToolTipText("");
+        updateBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.darkGray));
+        updateBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpupdatesLayout = new javax.swing.GroupLayout(jpupdates);
+        jpupdates.setLayout(jpupdatesLayout);
+        jpupdatesLayout.setHorizontalGroup(
+            jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpupdatesLayout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addGroup(jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpupdatesLayout.createSequentialGroup()
+                        .addComponent(updatesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(163, 163, 163))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpupdatesLayout.createSequentialGroup()
+                        .addGroup(jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(84, 84, 84))))
+        );
+        jpupdatesLayout.setVerticalGroup(
+            jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpupdatesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(updatesLabel)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(updateBtn)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jpupdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
+
+        jptimetable.setBackground(new java.awt.Color(255, 255, 255));
+        jptimetable.setPreferredSize(new java.awt.Dimension(480, 404));
+
+        jLabel12.setBackground(new java.awt.Color(220, 220, 220));
+        jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("TimeTable");
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+
+        timeTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        timeTable.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        timeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "StartTime ", "End Time ", "Monday ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        timeTable.setCellSelectionEnabled(true);
+        timeTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        timeTable.setGridColor(new java.awt.Color(51, 51, 51));
+        timeTable.setRowHeight(35);
+        timeTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        timeTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        timeTable.setShowGrid(true);
+        timeTable.getTableHeader().setResizingAllowed(false);
+        timeTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(timeTable);
+        timeTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        editButton.setBackground(new java.awt.Color(79, 66, 255));
+        editButton.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        editButton.setForeground(new java.awt.Color(255, 255, 255));
+        editButton.setText("Edit");
+        editButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jptimetableLayout = new javax.swing.GroupLayout(jptimetable);
+        jptimetable.setLayout(jptimetableLayout);
+        jptimetableLayout.setHorizontalGroup(
+            jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jptimetableLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jptimetableLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jptimetableLayout.setVerticalGroup(
+            jptimetableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jptimetableLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(editButton)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
 
         NavigationPanel.setBackground(new java.awt.Color(79, 66, 255));
 
@@ -492,6 +602,7 @@ public class MainPage extends javax.swing.JFrame {
         logOutBtn.setForeground(new java.awt.Color(255, 255, 255));
         logOutBtn.setText("Log Out");
         logOutBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        logOutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOutBtnActionPerformed(evt);
@@ -538,7 +649,6 @@ public class MainPage extends javax.swing.JFrame {
         UserLoginInfoPanel.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Name : ");
 
         jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
@@ -559,9 +669,10 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(UserLoginInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(UserLoginInfoPanelLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -588,7 +699,7 @@ public class MainPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        try {
+
             homePanel.setVisible(true);
             jpupdates.setVisible(false);
             jptimetable.setVisible(false);
@@ -597,32 +708,6 @@ public class MainPage extends javax.swing.JFrame {
             updates.setBackground(new Color(79,66,255));
             timetable.setBackground(new Color(79,66,255));
             exam.setBackground(new Color(79,66,255));
-            Connection con=null;
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase","root",DB_PASSWORD);
-            Statement stmt=con.createStatement();
-            stmt.executeUpdate("create table if not exists clg(TeacherName varchar(45),Subject varchar(100))");
-            stmt.executeUpdate("insert into clg values('PD','SE')");
-            stmt.executeUpdate("insert into clg values('RP','Advance Java')");
-            stmt.executeUpdate("insert into clg values('KKG','Android')");
-            stmt.executeUpdate("insert into clg values('SSW','Computer Network')");
-            stmt.executeUpdate("insert into clg values('SSV','Linear Algebra')");
-            stmt.executeUpdate("insert into clg values('PD','FOA')");
-            stmt.executeUpdate("insert into clg values('APR','.NET')");
-            
-            ResultSet rs = stmt.executeQuery("select * from clg");
-            
-            while(rs.next()){
-                String TeacherName = rs.getString("TeacherName");
-                String Subject = rs.getString("Subject");
-                
-                String tbData[]={TeacherName,Subject};
-                DefaultTableModel tbl = (DefaultTableModel)jTable1.getModel();
-                tbl.addRow(tbData);
-            }
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_HomeMouseClicked
 
     private void updatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatesMouseClicked
@@ -634,10 +719,6 @@ public class MainPage extends javax.swing.JFrame {
         updates.setBackground(new Color(176,189,0));
         timetable.setBackground(new Color(79,66,255));
         exam.setBackground(new Color(79,66,255));
-        UpdatePanelExample updatePanel = new UpdatePanelExample();
-        //jpupdates.add(updatePanel);
-        updatePanel.setVisible(true);
-        dispose();
     }//GEN-LAST:event_updatesMouseClicked
 
     private void timetableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timetableMouseClicked
@@ -752,6 +833,115 @@ public class MainPage extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_editButtonActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+             UpdatePanelExample updatePanel = new UpdatePanelExample();
+            //jpupdates.add(updatePanel);
+            updatePanel.setVisible(true);
+            dispose();
+    }//GEN-LAST:event_updateBtnActionPerformed
+    private void populateTeacherTable(){
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/teacherdatabase", "root", DB_PASSWORD);
+
+            // Create the table if not exists
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS clg(TeacherName VARCHAR(45), Subject VARCHAR(100))";
+            try (PreparedStatement createTableStmt = con.prepareStatement(createTableQuery)) {
+                createTableStmt.executeUpdate();
+            }
+            
+            //Delete the previous records
+            String deleteTableQuery = "DELETE FROM clg";
+            try(PreparedStatement deleteTableStmt = con.prepareStatement(deleteTableQuery)){
+                deleteTableStmt.executeUpdate();
+            }
+
+            String insertDataQuery = "INSERT INTO clg(TeacherName, Subject) VALUES (?, ?)";
+            try (PreparedStatement insertDataStmt = con.prepareStatement(insertDataQuery)) {
+                // Insert record 1
+                insertDataStmt.setString(1, "PD");
+                insertDataStmt.setString(2, "SE");
+                insertDataStmt.executeUpdate();
+
+                // Insert record 2
+                insertDataStmt.setString(1, "RP");
+                insertDataStmt.setString(2, "Advance Java");
+                insertDataStmt.executeUpdate();
+
+                // Insert record 3
+                insertDataStmt.setString(1, "KKG");
+                insertDataStmt.setString(2, "Android");
+                insertDataStmt.executeUpdate();
+
+                // Insert record 4
+                insertDataStmt.setString(1, "SSW");
+                insertDataStmt.setString(2, "Computer Network");
+                insertDataStmt.executeUpdate();
+
+                // Insert record 5
+                insertDataStmt.setString(1, "SSV");
+                insertDataStmt.setString(2, "Linear Algebra");
+                insertDataStmt.executeUpdate();
+
+                // Insert record 6
+                insertDataStmt.setString(1, "PD");
+                insertDataStmt.setString(2, "FOA");
+                insertDataStmt.executeUpdate();
+
+                // Insert record 7
+                insertDataStmt.setString(1, "APR");
+                insertDataStmt.setString(2, ".NET");
+                insertDataStmt.executeUpdate();
+            }
+
+
+            // Retrieve data using a prepared statement
+            String selectDataQuery = "SELECT * FROM clg";
+            try (PreparedStatement selectDataStmt = con.prepareStatement(selectDataQuery);
+                 ResultSet rs = selectDataStmt.executeQuery()) {
+
+                DefaultTableModel tbl = (DefaultTableModel) jTable1.getModel();
+
+                while (rs.next()) {
+                    String TeacherName = rs.getString("TeacherName");
+                    String Subject = rs.getString("Subject");
+
+                    String tbData[] = {TeacherName, Subject};
+                    tbl.addRow(tbData);
+                }
+            }
+
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void populateUpdatesTable(){
+        try {
+            DefaultTableModel model = (DefaultTableModel) updatesTable.getModel();
+            model.setRowCount(0);
+            PreparedStatement pstmt = null;
+            Connection con=null;
+            ResultSet rs=null;
+            // Fetch data from the database and add rows to the model
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/new", "root", DB_PASSWORD);
+            pstmt = con.prepareStatement("SELECT * FROM messages ORDER BY `timestamp` DESC");
+            rs=pstmt.executeQuery();
+            while (rs.next()) {
+            Object[] row = {
+                rs.getString("text"),
+                rs.getString("timestamp"),
+            };
+            model.addRow(row);
+            }con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     private void populateTimeTable() {
     // Assuming you have a second JTable named jTable2
         DefaultTableModel model = (DefaultTableModel) timeTable.getModel();
@@ -882,6 +1072,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     public javax.swing.JPanel jpexam;
     public javax.swing.JPanel jptimetable;
@@ -889,6 +1080,9 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton logOutBtn;
     private javax.swing.JTable timeTable;
     private javax.swing.JPanel timetable;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JPanel updates;
+    private javax.swing.JLabel updatesLabel;
+    private javax.swing.JTable updatesTable;
     // End of variables declaration//GEN-END:variables
 }

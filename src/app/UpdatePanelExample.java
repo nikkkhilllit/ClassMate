@@ -61,7 +61,7 @@ public class UpdatePanelExample extends JFrame {
     private void createTable() {
         try {
             Statement stmt = conn.createStatement();
-            stmt.execute("CREATE TABLE IF NOT EXISTS messages (id INT PRIMARY KEY, text VARCHAR(45), timestamp TIMESTAMP)");
+            stmt.execute("CREATE TABLE IF NOT EXISTS messages (text VARCHAR(45), timestamp TIMESTAMP)");
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error creating table in database", e);
             JOptionPane.showMessageDialog(this, "Error creating table in database", "Error", JOptionPane.ERROR_MESSAGE);
