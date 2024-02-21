@@ -55,14 +55,6 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpexam = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        examTable = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        editExamBtn = new javax.swing.JButton();
         homePanel = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -77,6 +69,14 @@ public class MainPage extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         timeTable = new javax.swing.JTable();
         editButton = new javax.swing.JButton();
+        jpexam = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        examTable = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        editExamBtn = new javax.swing.JButton();
         NavigationPanel = new javax.swing.JPanel();
         Home = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -94,140 +94,19 @@ public class MainPage extends javax.swing.JFrame {
         TimeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("MainPage");
-        setPreferredSize(new java.awt.Dimension(820, 570));
+        setTitle("Notify");
         setSize(new java.awt.Dimension(543, 385));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpexam.setBackground(new java.awt.Color(255, 255, 255));
-
-        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        examTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        examTable.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
-        examTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Sr No.", "Date", "S.Y.B.Sc. C.S"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        examTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        examTable.setGridColor(new java.awt.Color(0, 0, 0));
-        examTable.setName(""); // NOI18N
-        examTable.setRowHeight(35);
-        examTable.setShowHorizontalLines(true);
-        examTable.getTableHeader().setResizingAllowed(false);
-        examTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(examTable);
-        if (examTable.getColumnModel().getColumnCount() > 0) {
-            examTable.getColumnModel().getColumn(0).setPreferredWidth(8);
-            examTable.getColumnModel().getColumn(1).setPreferredWidth(10);
-            examTable.getColumnModel().getColumn(2).setPreferredWidth(20);
-        }
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel5.setText("Exam TimeTable ");
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        jLabel6.setText("Third Semester End (External) Examination October-2023");
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        jLabel7.setText("A.T.K.T - Regular & Repeater Students.");
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        jLabel8.setText("Time :- 11:30 a.m. to 1:30 p.m.");
-
-        editExamBtn.setBackground(new java.awt.Color(79, 66, 255));
-        editExamBtn.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        editExamBtn.setForeground(new java.awt.Color(255, 255, 255));
-        editExamBtn.setText("Edit");
-        editExamBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        editExamBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        editExamBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editExamBtnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jpexamLayout = new javax.swing.GroupLayout(jpexam);
-        jpexam.setLayout(jpexamLayout);
-        jpexamLayout.setHorizontalGroup(
-            jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpexamLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                        .addGap(0, 122, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(123, 123, 123))
-                    .addComponent(jScrollPane2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                                .addComponent(editExamBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(184, 184, 184))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(205, 205, 205))
-            .addGroup(jpexamLayout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jpexamLayout.setVerticalGroup(
-            jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(editExamBtn)
-                .addGap(29, 29, 29))
-        );
-
-        getContentPane().add(jpexam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
-
         homePanel.setBackground(new java.awt.Color(255, 255, 255));
+        homePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         homePanel.setPreferredSize(new java.awt.Dimension(480, 404));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Welcome to Activity Management");
+        jLabel11.setText("Welcome to Notify");
 
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
@@ -247,7 +126,6 @@ public class MainPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(false);
         jTable1.setGridColor(new java.awt.Color(51, 51, 51));
         jTable1.setRowHeight(40);
         jTable1.setShowGrid(true);
@@ -328,7 +206,7 @@ public class MainPage extends javax.swing.JFrame {
         updateBtn.setBackground(new java.awt.Color(79, 66, 255));
         updateBtn.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
-        updateBtn.setText("Update");
+        updateBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-edit-24.png")); // NOI18N
         updateBtn.setToolTipText("");
         updateBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.darkGray));
         updateBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -351,7 +229,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpupdatesLayout.createSequentialGroup()
                         .addGroup(jpupdatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(84, 84, 84))))
         );
         jpupdatesLayout.setVerticalGroup(
@@ -361,9 +239,9 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(updatesLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(updateBtn)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         getContentPane().add(jpupdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
@@ -463,6 +341,130 @@ public class MainPage extends javax.swing.JFrame {
 
         getContentPane().add(jptimetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
 
+        jpexam.setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        examTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        examTable.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
+        examTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Sr No.", "Date", "S.Y.B.Sc. C.S"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        examTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        examTable.setGridColor(new java.awt.Color(0, 0, 0));
+        examTable.setName(""); // NOI18N
+        examTable.setRowHeight(35);
+        examTable.setShowHorizontalLines(true);
+        examTable.getTableHeader().setResizingAllowed(false);
+        examTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(examTable);
+        if (examTable.getColumnModel().getColumnCount() > 0) {
+            examTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+            examTable.getColumnModel().getColumn(1).setPreferredWidth(10);
+            examTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+        }
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel5.setText("Exam TimeTable ");
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel6.setText("Third Semester End (External) Examination October-2023");
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel7.setText("A.T.K.T - Regular & Repeater Students.");
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel8.setText("Time :- 11:30 a.m. to 1:30 p.m.");
+
+        editExamBtn.setBackground(new java.awt.Color(79, 66, 255));
+        editExamBtn.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
+        editExamBtn.setForeground(new java.awt.Color(255, 255, 255));
+        editExamBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-edit-24.png")); // NOI18N
+        editExamBtn.setText("Edit");
+        editExamBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        editExamBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editExamBtn.setIconTextGap(10);
+        editExamBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editExamBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpexamLayout = new javax.swing.GroupLayout(jpexam);
+        jpexam.setLayout(jpexamLayout);
+        jpexamLayout.setHorizontalGroup(
+            jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpexamLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                        .addGap(0, 122, Short.MAX_VALUE)
+                        .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(123, 123, 123))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(184, 184, 184))))))
+            .addGroup(jpexamLayout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(205, 205, 205))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                        .addComponent(editExamBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
+        );
+        jpexamLayout.setVerticalGroup(
+            jpexamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpexamLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(editExamBtn)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jpexam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 610, 470));
+
         NavigationPanel.setBackground(new java.awt.Color(79, 66, 255));
 
         Home.setBackground(new java.awt.Color(79, 66, 255));
@@ -477,6 +479,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-home-24.png")); // NOI18N
         jLabel1.setText("Home");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -505,6 +508,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-notice-24.png")); // NOI18N
         jLabel2.setText("Updates");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 30));
@@ -541,6 +545,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-timetable-24.png")); // NOI18N
         jLabel3.setText("Time Table");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -577,6 +582,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-exam-24.png")); // NOI18N
         jLabel4.setText("Exam");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -600,6 +606,7 @@ public class MainPage extends javax.swing.JFrame {
         logOutBtn.setBackground(new java.awt.Color(79, 66, 255));
         logOutBtn.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         logOutBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logOutBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-log-out-24.png")); // NOI18N
         logOutBtn.setText("Log Out");
         logOutBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         logOutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -622,8 +629,8 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(timetable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exam, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
-                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
         NavigationPanelLayout.setVerticalGroup(
@@ -836,10 +843,40 @@ public class MainPage extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-             UpdatePanelExample updatePanel = new UpdatePanelExample();
-            //jpupdates.add(updatePanel);
-            updatePanel.setVisible(true);
-            dispose();
+            Connection con=null;
+            PreparedStatement preparedstatement=null;
+            ResultSet rs=null;
+            try{
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdatabase","root",DB_PASSWORD);
+                preparedstatement=con.prepareStatement("SELECT username FROM students WHERE username=?");
+                preparedstatement.setString(1, loginUsername);
+                rs=preparedstatement.executeQuery();
+                if (rs.next()) {
+                    updateBtn.setEnabled(false);
+                    try {
+                        Thread.sleep(4);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    showMessageDialog( "You are not allowed to edit", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch(SQLException exception){
+                exception.printStackTrace();
+            } finally {
+                try {
+                    con.close();
+                    preparedstatement.close();
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(updateBtn.isEnabled()){
+                 UpdatePanelExample updatePanel = new UpdatePanelExample(loginUsername);
+                //jpupdates.add(updatePanel);
+                updatePanel.setVisible(true);
+                dispose();
+            }
     }//GEN-LAST:event_updateBtnActionPerformed
     private void populateTeacherTable(){
         try {
@@ -953,7 +990,7 @@ public class MainPage extends javax.swing.JFrame {
     try {
         // Fetch data from the database and add rows to the model
         con= DriverManager.getConnection("jdbc:mysql://localhost:3306/lecturedatabase", "root", DB_PASSWORD);
-        pstmt = con.prepareStatement("SELECT * FROM timetable ORDER BY `Start Time` ASC");
+        pstmt = con.prepareStatement("SELECT * FROM timetable ORDER BY `id` ASC");
         rs=pstmt.executeQuery();
 
         while (rs.next()) {
@@ -1081,7 +1118,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTable timeTable;
     private javax.swing.JPanel timetable;
     private javax.swing.JButton updateBtn;
-    private javax.swing.JPanel updates;
+    public javax.swing.JPanel updates;
     private javax.swing.JLabel updatesLabel;
     private javax.swing.JTable updatesTable;
     // End of variables declaration//GEN-END:variables

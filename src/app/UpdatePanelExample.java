@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.*;
 import java.awt.TrayIcon.MessageType;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UpdatePanelExample extends JFrame {
       
@@ -14,8 +16,10 @@ public class UpdatePanelExample extends JFrame {
     private static final String DB_PASSWORD="pranav@030429";
     private static final Logger LOGGER = Logger.getLogger(UpdatePanelExample.class.getName());
     private TrayIcon trayIcon;
-
-    public UpdatePanelExample() {
+    private String loginUsername;
+    public UpdatePanelExample(String u1) {
+        loginUsername=u1;
+        
         setTitle("Update Panel");
         setSize(610, 490);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,8 +36,32 @@ public class UpdatePanelExample extends JFrame {
         switchPanelButton.setBackground(new Color(204, 204, 255));
         switchPanelButton.addActionListener(e -> switchToMessagePanel());
         
+        JButton returnToDefinedPageButton = new JButton("Back to MainPage");
+        returnToDefinedPageButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Thread.sleep(500);
+                    MainPage m1= new MainPage(loginUsername);
+                    m1.setVisible(true);
+                    m1.homePanel.setVisible(false);
+                    //m1.Home.setBackground(new java.awt.Color(176, 189, 0));
+                    m1.jpupdates.setVisible(true);
+                    m1.updates.setBackground(new java.awt.Color(176, 189, 0));
+                    m1.jptimetable.setVisible(false);
+                    m1.jpexam.setVisible(false);
+                    dispose();
+                    // JOptionPane.showMessageDialog(null, "Returning to Defined Page!");
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UpdatePanelExample.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // Align the button to the left
         buttonPanel.add(switchPanelButton);
+        buttonPanel.add(returnToDefinedPageButton); // Add the new button
+        mainPanel.add(buttonPanel, BorderLayout.NORTH); // Add buttonPanel to the top
     
         mainPanel.add(switchPanelButton, BorderLayout.SOUTH);
 
@@ -239,7 +267,7 @@ public class UpdatePanelExample extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            UpdatePanelExample example = new UpdatePanelExample();
+            UpdatePanelExample example = new UpdatePanelExample("");
             example.setVisible(true);
         });
     }

@@ -54,31 +54,44 @@ public class EditableTimeTable extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Start Time ", "End Time ", "Monday ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+                "Start Time ", "End Time ", "Monday ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCellSelectionEnabled(true);
+        jTable1.setColumnSelectionAllowed(false);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTable1.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(6).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setResizable(false);
+            jTable1.getColumnModel().getColumn(8).setResizable(false);
+        }
 
         addBtn.setBackground(new java.awt.Color(79, 66, 255));
         addBtn.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-add-file-24.png")); // NOI18N
         addBtn.setText("Add");
         addBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -91,8 +104,9 @@ public class EditableTimeTable extends javax.swing.JFrame {
         saveBtn.setBackground(new java.awt.Color(79, 66, 255));
         saveBtn.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(255, 255, 255));
+        saveBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-save-24.png")); // NOI18N
         saveBtn.setText("Save");
-        saveBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        saveBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,8 +117,10 @@ public class EditableTimeTable extends javax.swing.JFrame {
         backBtn.setBackground(new java.awt.Color(79, 66, 255));
         backBtn.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
+        backBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\back_btn.png")); // NOI18N
         backBtn.setText("Back");
         backBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        backBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -116,20 +132,18 @@ public class EditableTimeTable extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(312, 312, 312))
+                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(302, 302, 302))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +156,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(saveBtn)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,7 +189,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
             exception.printStackTrace();
         }
         if(addBtn.isEnabled()){
-            String[] columnNames = {"Start Time", "End Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+            String[] columnNames = {"Start Time", "End Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","id"};
             DefaultTableModel model = new DefaultTableModel(null, columnNames);
             jTable1.setModel(model);
 
@@ -183,7 +197,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
             FileInputStream excelFIS = null;
             BufferedInputStream excelBIS = null;
             Workbook excelImportToJTable = null; // Use Workbook instead of XSSFWorkbook
-            String defaultCurrentDirectoryPath = "C:\\Windows\\system32";
+            String defaultCurrentDirectoryPath = "C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\ClassMate";
             JFileChooser excelFileChooser = new JFileChooser(defaultCurrentDirectoryPath);
             excelFileChooser.setDialogTitle("Select Excel File");
             FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm", "csv");
@@ -219,7 +233,8 @@ public class EditableTimeTable extends javax.swing.JFrame {
                         Cell excelThursday = excelRow.getCell(5);
                         Cell excelFriday = excelRow.getCell(6);
                         Cell excelSaturday = excelRow.getCell(7);
-                        model.addRow(new Object[]{excelStartTime, excelEndTime, excelMonday, excelTuesday, excelWednesday, excelThursday, excelFriday, excelSaturday});
+                        Cell excelid = excelRow.getCell(8);
+                        model.addRow(new Object[]{excelStartTime, excelEndTime, excelMonday, excelTuesday, excelWednesday, excelThursday, excelFriday, excelSaturday,excelid});
                     }
                     JOptionPane.showMessageDialog(null, "Excel File Imported Successfully !!.....");
                 } catch (IOException iOException) {
@@ -258,7 +273,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
                     deleteStatement.executeUpdate();
 
                     // Define the SQL query for batch insertion
-                    String bulkQuery = "INSERT INTO timetable (`Start Time`, `End Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    String bulkQuery = "INSERT INTO timetable (`Start Time`, `End Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`,`id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
 
                     // Create a PreparedStatement for batch execution
                     try (PreparedStatement pstmt = con.prepareStatement(bulkQuery)) {
@@ -272,6 +287,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
                             String thursday = bulkModel.getValueAt(i, 5).toString();
                             String friday = bulkModel.getValueAt(i, 6).toString();
                             String saturday = bulkModel.getValueAt(i, 7).toString();
+                            String id =bulkModel.getValueAt(i, 8).toString();
 
                             // Set the parameters for the PreparedStatement
                             pstmt.setString(1, startTime);
@@ -282,6 +298,7 @@ public class EditableTimeTable extends javax.swing.JFrame {
                             pstmt.setString(6, thursday);
                             pstmt.setString(7, friday);
                             pstmt.setString(8, saturday);
+                            pstmt.setString(9, id);
 
                             // Add the statement to the batch
                             pstmt.addBatch();

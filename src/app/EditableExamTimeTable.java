@@ -92,9 +92,11 @@ public class EditableExamTimeTable extends javax.swing.JFrame {
         addBtn.setBackground(new java.awt.Color(79, 66, 255));
         addBtn.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-add-file-24.png")); // NOI18N
         addBtn.setText("Add");
         addBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addBtn.setIconTextGap(8);
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
@@ -104,8 +106,10 @@ public class EditableExamTimeTable extends javax.swing.JFrame {
         backBtn.setBackground(new java.awt.Color(79, 66, 255));
         backBtn.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
+        backBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\back_btn.png")); // NOI18N
         backBtn.setText("Back");
         backBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        backBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -115,6 +119,7 @@ public class EditableExamTimeTable extends javax.swing.JFrame {
         saveBtn.setBackground(new java.awt.Color(79, 66, 255));
         saveBtn.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(255, 255, 255));
+        saveBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\Downloads\\New folder\\icons8-save-24.png")); // NOI18N
         saveBtn.setText("Save");
         saveBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -129,29 +134,30 @@ public class EditableExamTimeTable extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(374, 374, 374)
-                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(340, 340, 340)
+                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(backBtn)
+                        .addComponent(saveBtn)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(59, 59, 59))
         );
 
         pack();
@@ -190,7 +196,7 @@ public class EditableExamTimeTable extends javax.swing.JFrame {
             FileInputStream excelFIS = null;
             BufferedInputStream excelBIS = null;
             Workbook excelImportToJTable = null; // Use Workbook instead of XSSFWorkbook
-            String defaultCurrentDirectoryPath = "C:\\Windows\\system32";
+            String defaultCurrentDirectoryPath = "C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\ClassMate";
             JFileChooser excelFileChooser = new JFileChooser(defaultCurrentDirectoryPath);
             excelFileChooser.setDialogTitle("Select Excel File");
             FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm", "csv");
