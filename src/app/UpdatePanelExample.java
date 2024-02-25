@@ -141,6 +141,25 @@ public class UpdatePanelExample extends JFrame {
         //messageInputPanel.add(name2);
         
         JButton submitButton = new JButton("Submit");
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Thread.sleep(500);
+                    MainPage m1= new MainPage(loginUsername);
+                    m1.setVisible(true);
+                    m1.homePanel.setVisible(false);
+                    //m1.Home.setBackground(new java.awt.Color(176, 189, 0));
+                    m1.jpupdates.setVisible(true);
+                    m1.updates.setBackground(new java.awt.Color(176, 189, 0));
+                    m1.jptimetable.setVisible(false);
+                    m1.jpexam.setVisible(false);
+                    dispose();
+                    // JOptionPane.showMessageDialog(null, "Returning to Defined Page!");
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UpdatePanelExample.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
         submitButton.setBackground(new Color(79,66,255));
         submitButton.setFont(new Font("Dubai Medium",Font.PLAIN,14));
         submitButton.setForeground(new Color(255,255,255));
